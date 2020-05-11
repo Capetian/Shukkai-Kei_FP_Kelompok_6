@@ -9,16 +9,16 @@ use ShukkaiKei\Modules\Forum\Models\Users;
 class AdminController extends ControllerBase
 {
 
-    public function beforeExecuteRoute($dispatcher) {
-        if ($this->session->auth['role'] < 2 ) {
-            $this->dispatcher->forward(
-                [
-                    'controller' => 'index',
-                    'action'     => 'index',
-                ]
-            );
-        }
-    }
+    // public function beforeExecuteRoute($dispatcher) {
+    //     if ($this->session->auth['role'] < 2 ) {
+    //         $this->dispatcher->forward(
+    //             [
+    //                 'controller' => 'index',
+    //                 'action'     => 'index',
+    //             ]
+    //         );
+    //     }
+    // }
 
     public function createSubAction()
     {
