@@ -48,7 +48,6 @@ class AuthController extends ControllerBase
                 $this->flashSession->error("User is banned from the server");
                 $this->response->redirect('/Blog/auth/login');
             } else {
-
                 $this->session->set('auth', ['username' => $data['username'], 'is_admin' => $user->is_admin]);
                 // $this->flashSession->success('Login success');
                 $this->response->redirect('/Blog');

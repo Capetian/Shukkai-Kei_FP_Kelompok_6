@@ -16,35 +16,42 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/') }}">Home</a>
+					<a class="nav-link" href="{{ url('/Blog/') }}">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/index/about') }}">About</a>
+					<a class="nav-link" href="{{ url('/Blog/index/about') }}">About</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/index/contact') }}">Contact</a>
+					<a class="nav-link" href="{{ url('/Blog/index/contact') }}"
+						>Contact</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url('/Forum') }}">Forum</a>
 				</li>
 
 				{%- if session.has('auth') -%}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/blog') }}">Blog</a>
+					<a class="nav-link" href="{{ url('/Blog/blog') }}">Blog</a>
 				</li>
 				{%- if session.get('auth')['is_admin'] == 1 -%}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/dashboard') }}">Dashboard</a>
+					<a class="nav-link" href="{{ url('/Blog/dashboard') }}">Dashboard</a>
 				</li>
 				{%- endif -%}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/auth/logout') }}"
+					<a class="nav-link" href="{{ url('/Blog/auth/logout') }}"
 						>{{ session.get('auth')['username'] }}, Logout</a
 					>
 				</li>
 				{%- else -%}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/auth/login') }}">Login</a>
+					<a class="nav-link" href="{{ url('/Blog/auth/login') }}">Login</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('Blog/auth/register') }}">Register</a>
+					<a class="nav-link" href="{{ url('/Blog/auth/register') }}"
+						>Register</a
+					>
 				</li>
 				{%- endif -%}
 			</ul>

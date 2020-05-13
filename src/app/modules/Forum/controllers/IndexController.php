@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
 use ShukkaiKei\Modules\Forum\Controllers\ControllerBase;
@@ -14,8 +16,10 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
+
+
         $subforums = $this->toJson(Subforums::join('threads')->limit(5)->get());
-        $threads = $this->toJson(Threads::where("title","%", ".")->join('replies')->orderBy("updated_at","desc")->limit(5)->get());
+        $threads = $this->toJson(Threads::where("title", "%", ".")->join('replies')->orderBy("updated_at", "desc")->limit(5)->get());
         $this->view->subforums = $subforums;
         $this->view->threads = $threads;
 
@@ -24,6 +28,7 @@ class IndexController extends ControllerBase
 
     public function loginAction()
     {
+        
         $this->view->pick('index/login');
     }
 
@@ -39,8 +44,8 @@ class IndexController extends ControllerBase
         $user->fill(
             [
                 'username' => $request->getPost('username'),
-                'email' => $request->getPost('email',"email"),
-                'password' => $this->security->hash($request->getPost('password',"string")),
+                'email' => $request->getPost('email', "email"),
+                'password' => $this->security->hash($request->getPost('password', "string")),
                 'role' => 0,
             ]
 
@@ -53,19 +58,16 @@ class IndexController extends ControllerBase
 
         $request = $this->request;
         $email = $request->getPost('em', 'email');
-        $pass = $request->getPost('pw',"string");
-        $user = Users::findFirst(["email"=> $email])->toArray();
+        $pass = $request->getPost('pw', "string");
+        $user = Users::findFirst(["email" => $email])->toArray();
 
-        if($user)
-        {
-            if($this->security->checkHash($pass, $user['password']) === true){
-                $this->session->set('auth',['username' => $user['username'], 'uid' => $user['id'], 'role' => $user['role']]);
-            }
-            else{
+        if ($user) {
+            if ($this->security->checkHash($pass, $user['password']) === true) {
+                $this->session->set('auth', ['username' => $user['username'], 'uid' => $user['id'], 'role' => $user['role']]);
+            } else {
                 $this->flashSession->error('Password anda salah');
             }
-        }
-        else{
+        } else {
             $this->flashSession->error('Email tidak ditemukan');
         }
         $this->response->redirect('/Forum');
@@ -81,10 +83,8 @@ class IndexController extends ControllerBase
     public function searchAction()
     {
         $request = $this->checkCSRF($this->request);
-        $results =  $this->toJson(Threads::where("title","%",$request->getPost("search"))->join('user')->get());;
+        $results =  $this->toJson(Threads::where("title", "%", $request->getPost("search"))->join('user')->get());;
         $this->view->results = $results;
         $this->view->pick('index/search');
     }
-
 }
-

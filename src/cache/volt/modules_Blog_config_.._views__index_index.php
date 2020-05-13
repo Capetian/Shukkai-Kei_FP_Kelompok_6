@@ -15,7 +15,7 @@
 		
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: <?= $this->url->get('img/japan/test.jpg') ?>">
+<header class="masthead" style="background-image: url('/public/img/japan/test.jpg')">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">

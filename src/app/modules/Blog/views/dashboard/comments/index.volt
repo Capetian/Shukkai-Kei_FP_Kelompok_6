@@ -47,15 +47,15 @@
 				<tbody>
 					{%- if records|length > 0 -%} {% for record in records %}
 					<tr>
-						<td>{{ record.comments.id }}</td>
-						<td>{{ record.posts.title }}</td>
-						<td>{{ record.comments.username }}</td>
-						<td>{{ record.comments.content }}</td>
+						<td>{{ record['Comments'].id }}</td>
+						<td>{{ record['Posts'].title }}</td>
+						<td>{{ record['Comments'].username }}</td>
+						<td>{{ record['Comments'].content }}</td>
 						<td>
 							<div class="d-flex justify-content-center">
 								<a
 									onclick="return confirm('Are you sure you want to delete this comments?');"
-									href="/dashboard/comments/{{ record.comments.id }}/delete"
+									href="{{url('/Blog/comments/delete/') ~  record['Comments'].id }}/"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-trash-alt"></i> Delete
@@ -63,7 +63,11 @@
 							</div>
 						</td>
 					</tr>
-					{% endfor %} {%- endif -%}
+					{% endfor %} {%- else -%}
+					<tr>
+						<td colspan="5">No comments found</td>
+					</tr>
+					{%- endif -%}
 				</tbody>
 			</table>
 		</div>

@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Blog\Controllers;
 
 
@@ -15,15 +16,13 @@ class BlogController extends ControllerBase
         $this->view->setVar('records', $records);
     }
 
-    public function showAction()
+    public function showAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
-
         $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Posts WHERE id = :id: AND active = 1";
 
         $records = $this->modelsManager->executeQuery($phql, ['id' => $id]);
 
-        $comment_phql = "SELECT * FROM Comments WHERE post_id = :id:";
+        $comment_phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Comments WHERE post_id = :id:";
 
         $comments = $this->modelsManager->executeQuery($comment_phql, ['id' => $id]);
 

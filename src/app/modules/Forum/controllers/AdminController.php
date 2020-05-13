@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
 use ShukkaiKei\Modules\Forum\Controllers\ControllerBase;
@@ -22,7 +24,7 @@ class AdminController extends ControllerBase
 
     public function createSubAction()
     {
-        $this->view->pick('subforum/create');  
+        $this->view->pick('subforum/create');
     }
 
     public function storeSubAction()
@@ -43,7 +45,7 @@ class AdminController extends ControllerBase
     {
         $users = $this->toJson(Users::orderBy("role", "desc")->get());
         $this->view->users = $users;
-        $this->view->pick("admin/list"); 
+        $this->view->pick("admin/list");
     }
 
     public function updateRoleAction()
@@ -56,7 +58,4 @@ class AdminController extends ControllerBase
         $user->save();
         $this->response->redirect('/Forum/admin/listUser');
     }
-
-
-
 }

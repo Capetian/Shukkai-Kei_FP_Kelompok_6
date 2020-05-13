@@ -31,7 +31,10 @@
 						<th>Created At</th>
 						<th>
 							<div class="d-flex justify-content-center">
-								<a href="/dashboard/changelogs/create" class="btn btn-primary">
+								<a
+									href="{{ url('/Blog/changelogs/create') }}"
+									class="btn btn-primary"
+								>
 									<i class="fas fa-plus"></i> Create
 								</a>
 							</div>
@@ -61,26 +64,29 @@
 						<td>
 							<div class="d-flex justify-content-center">
 								{%- if record.setted == 1 -%}
-								<a href="/dashboard/changelogs/unset" class="btn btn-secondary">
+								<a
+									href="{{ url('/Blog/changelogs/unset') }}"
+									class="btn btn-secondary"
+								>
 									<i class="fas fa-wrench"></i> Unset
 								</a>
 								{%- else -%}
 								<a
-									href="/dashboard/changelogs/{{ record.id }}/set"
+									href="{{url('/Blog/changelogs/set/') ~  record.id }}"
 									class="btn btn-success"
 								>
 									<i class="fas fa-wrench"></i> Set
 								</a>
 								{%- endif -%}
 								<a
-									href="/dashboard/changelogs/{{ record.id }}/edit"
+									href="{{url('/Blog/changelogs/edit/') ~ record.id }}"
 									class="btn btn-warning"
 								>
 									<i class="fas fa-edit"></i>
 								</a>
 								<a
 									onclick="return confirm('Are you sure you want to delete this item?');"
-									href="/dashboard/changelogs/{{ record.id }}/delete"
+									href="{{url('/Blog/changelogs/delete/') ~ record.id}}"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-trash-alt"></i>
@@ -89,7 +95,11 @@
 						</td>
 					</tr>
 
-					{% endfor %} {%- else -%}{%- endif -%}
+					{% endfor %} {%- else -%}
+					<tr>
+						<td colspan="5">No changelogs found</td>
+					</tr>
+					{%- endif -%}
 				</tbody>
 			</table>
 		</div>

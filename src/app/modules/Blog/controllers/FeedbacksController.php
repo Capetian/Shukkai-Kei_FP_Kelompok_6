@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Blog\Controllers;
 
 use ShukkaiKei\Modules\Blog\Models\Feedbacks;
@@ -37,9 +38,8 @@ class FeedbacksController extends ControllerBase
         $this->response->redirect('/Blog/index/contact');
     }
 
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
 
         $phql = "DELETE FROM ShukkaiKei\Modules\Blog\Models\Feedbacks WHERE id = :id:";
         $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);

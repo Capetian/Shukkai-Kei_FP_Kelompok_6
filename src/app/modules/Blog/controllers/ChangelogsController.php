@@ -52,9 +52,8 @@ class ChangelogsController extends ControllerBase
         $this->response->redirect('/Blog/changelogs');
     }
 
-    public function editAction()
+    public function editAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
 
         $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Changelogs WHERE id = :id:";
         $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);
@@ -87,9 +86,8 @@ class ChangelogsController extends ControllerBase
         $this->response->redirect('/Blog/changelogs');
     }
 
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
 
         $phql = "DELETE FROM ShukkaiKei\Modules\Blog\Models\Changelogs WHERE id = :id:";
         $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);
@@ -103,9 +101,8 @@ class ChangelogsController extends ControllerBase
     }
 
 
-    public function setAction()
+    public function setAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
 
         // RESET ALL SETTINGS TO DEFAULT
         $posts_reset_phql = "UPDATE ShukkaiKei\Modules\Blog\Models\Posts SET active = 0";

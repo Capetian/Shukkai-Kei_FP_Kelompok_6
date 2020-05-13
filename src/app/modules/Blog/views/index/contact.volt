@@ -1,6 +1,9 @@
 {% extends 'app.volt' %} {% block content %}
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/wp1929861.jpg');">
+<header
+	class="masthead"
+	style="background-image: url('/public/img/wp1929861.jpg');"
+>
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
@@ -25,7 +28,7 @@
 			<!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
 			<!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
 			<!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-			<form action="/dashboard/feedbacks/create" method="POST">
+			<form action="{{ url('/Blog/feedbacks/create') }}" method="POST">
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls">
 						<label>Name</label>

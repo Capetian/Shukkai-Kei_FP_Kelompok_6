@@ -49,7 +49,7 @@
 			<div class="card my-4">
 				<h5 class="card-header">Leave a Comment:</h5>
 				<div class="card-body">
-					<form action="/dashboard/comments/create" method="POST">
+					<form action="{{ url('/Blog/comments/create') }}" method="POST">
 						<input type="hidden" name="post_id" value="{{ records[0].id }}" />
 						<div class="form-group">
 							<textarea class="form-control" rows="3" name="content"></textarea>

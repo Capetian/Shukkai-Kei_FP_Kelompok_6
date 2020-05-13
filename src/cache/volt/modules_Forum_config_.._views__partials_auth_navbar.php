@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="{{ url('/') }}">Navbar</a>
+	<a class="navbar-brand" href="<?= $this->url->get('/') ?>">Navbar</a>
 	<button
 		class="navbar-toggler"
 		type="button"
@@ -15,20 +15,20 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="{{ url('/') }}"
+				<a class="nav-link" href="<?= $this->url->get('/') ?>"
 					>Home <span class="sr-only">(current)</span></a
 				>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ url('/Blog') }}">Blog</a>
+				<a class="nav-link" href="<?= $this->url->get('/Blog') ?>">Blog</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ url('/Forum') }}">Forum</a>
+				<a class="nav-link" href="<?= $this->url->get('/Forum') ?>">Forum</a>
 			</li>
 		</ul>
 		<form
 			class="form-inline ml-2"
-			action="{{ url('/Forum/index/search') }}"
+			action="<?= $this->url->get('/Forum/index/search') ?>"
 			method="POST"
 		>
 			<input
@@ -51,12 +51,12 @@
 			<li class="nav-item active">
 				<a
 					class="nav-link"
-					href="{{url('/Forum/user/show/') ~ session.get('auth')['uid'] }}"
-					>{{ session.get('auth')['username'] }}<span class="sr-only"></span
+					href="<?= $this->url->get('/Forum/user/show/') . $this->session->get('auth')['uid'] ?>"
+					><?= $this->session->get('auth')['username'] ?><span class="sr-only"></span
 				></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ url('/Forum/index/logout') }}">Logout</a>
+				<a class="nav-link" href="<?= $this->url->get('/Forum/index/logout') ?>">Logout</a>
 			</li>
 		</ul>
 	</div>

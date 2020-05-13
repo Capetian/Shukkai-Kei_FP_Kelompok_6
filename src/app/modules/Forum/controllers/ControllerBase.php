@@ -1,13 +1,15 @@
 <?php
-declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
+use Phalcon\Http\Request as Request;
 use Phalcon\Mvc\Controller;
 use Phalcon\Tag as Tag;
 
 class ControllerBase extends Controller
 {
-    public function onConstruct(){
+    public function onConstruct()
+    {
         $headCol = $this->assets->collection('header');
         $headCol->addCss('css/bootstrap.min.css');
 
@@ -28,7 +30,7 @@ class ControllerBase extends Controller
 
     public function toID($id)
     {
-        return new \MongoDB\BSON\ObjectId($id); 
+        return new \MongoDB\BSON\ObjectId($id);
     }
 
     public function checkCSRF(Request $req)

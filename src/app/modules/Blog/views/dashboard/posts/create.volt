@@ -15,7 +15,7 @@
 		<h6 class="m-0 font-weight-bold text-primary">Form</h6>
 	</div>
 	<div class="card-body">
-		<form action="/dashboard/posts/store" method="POST">
+		<form action="{{ url('Blog/posts/store') }}" method="POST">
 			<div class="form-group">
 				<label for="title">Title</label>
 				<input

@@ -31,7 +31,10 @@
 						<th>Created At</th>
 						<th>
 							<div class="d-flex justify-content-center">
-								<a href="/dashboard/posts/create" class="btn btn-primary">
+								<a
+									href="{{ url('/Blog/posts/create') }}"
+									class="btn btn-primary"
+								>
 									<i class="fas fa-plus"></i> Create
 								</a>
 							</div>
@@ -60,18 +63,21 @@
 						<td>{{ record.created_at }}</td>
 						<td>
 							<div class="d-flex justify-content-center">
-								<a href="/blog/{{ record.id }}" class="btn btn-info">
+								<a
+									href="{{url('/Blog/blog/show/') ~ record.id }}"
+									class="btn btn-info"
+								>
 									<i class="fas fa-eye"></i>
 								</a>
 								<a
-									href="/dashboard/posts/{{ record.id }}/edit"
+									href="{{url('/Blog/posts/edit/') ~ record.id }}"
 									class="btn btn-warning"
 								>
 									<i class="fas fa-edit"></i>
 								</a>
 								<a
 									onclick="return confirm('Are you sure you want to delete this item?');"
-									href="/dashboard/posts/{{ record.id }}/delete"
+									href="{{url('/Blog/posts/delete/') ~ record.id }}"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-trash-alt"></i>
@@ -79,7 +85,11 @@
 							</div>
 						</td>
 					</tr>
-					{% endfor %} {%- endif -%}
+					{% endfor %} {%- else -%}
+					<tr>
+						<td colspan="5">No posts found</td>
+					</tr>
+					{%- endif -%}
 				</tbody>
 			</table>
 		</div>

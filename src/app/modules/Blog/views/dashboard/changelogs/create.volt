@@ -15,7 +15,7 @@
 		<h6 class="m-0 font-weight-bold text-primary">Form</h6>
 	</div>
 	<div class="card-body">
-		<form action="/dashboard/changelogs/store" method="POST">
+		<form action="{{ url('/Blog/changelogs/store') }}" method="POST">
 			<div class="form-group">
 				<label for="title">Title</label>
 				<input
@@ -57,7 +57,6 @@
 
 <script>
 	document.getElementById('select-all').onclick = function () {
-		console.log('HALO');
 		let checkboxes = document.getElementsByName('activated_pages[]');
 		for (let checkbox of checkboxes) {
 			checkbox.checked = this.checked;

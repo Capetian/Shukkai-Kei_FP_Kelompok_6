@@ -58,7 +58,7 @@
 							<div class="d-flex justify-content-center">
 								<a
 									onclick="return confirm('Are you sure you want to delete this feedbacks?');"
-									href="/dashboard/feedbacks/{{ record.id }}/delete"
+									href="{{ url('/Blog/feedbacks/delete/') ~ record.id }}"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-trash-alt"></i> Delete
@@ -66,7 +66,11 @@
 							</div>
 						</td>
 					</tr>
-					{% endfor %} {%- endif -%}
+					{% endfor %} {%- else -%}
+					<tr>
+						<td colspan="5">No feedbacks found</td>
+					</tr>
+					{%- endif -%}
 				</tbody>
 			</table>
 		</div>

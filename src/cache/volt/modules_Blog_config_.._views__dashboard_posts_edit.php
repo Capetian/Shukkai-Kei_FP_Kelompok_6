@@ -38,79 +38,54 @@
 						<?= $this->flashSession->output() ?>
 						
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Feedbacks</h1>
+<h1 class="h3 mb-2 text-gray-800">Edit Posts</h1>
 <!-- <p class="mb-4">
-	DataTables is a third party plugin that is used to generate the demo table
-	below. For more information about DataTables, please visit the
-	<a target="_blank" href="https://datatables.net"
-		>official DataTables documentation</a
-	>.
-</p> -->
+		DataTables is a third party plugin that is used to generate the demo table
+		below. For more information about DataTables, please visit the
+		<a target="_blank" href="https://datatables.net"
+			>official DataTables documentation</a
+		>.
+	</p> -->
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
+<!-- Form Example --><?php if ($this->length($record) > 0) { ?><div class="card shadow mb-4">
 	<div class="card-header py-3">
-		<h6 class="m-0 font-weight-bold text-primary">Feedbacks Table</h6>
+		<h6 class="m-0 font-weight-bold text-primary">Form</h6>
 	</div>
 	<div class="card-body">
-		<div class="table-responsive">
-			<table
-				class="table table-bordered"
-				id="dataTable"
-				width="100%"
-				cellspacing="0"
-			>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Content</th>
-						<th>
-							Action
-						</th>
-					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Content</th>
-						<th>
-							Action
-						</th>
-					</tr>
-				</tfoot>
-				<tbody><?php if ($this->length($records) > 0) { ?><?php foreach ($records as $record) { ?>
-					<tr>
-						<td><?= $record->id ?></td>
-						<td><?= $record->name ?></td>
-						<td><?= $record->email ?></td>
-						<td><?= $record->phone ?></td>
-						<td><?= $record->content ?></td>
-						<td>
-							<div class="d-flex justify-content-center">
-								<a
-									onclick="return confirm('Are you sure you want to delete this feedbacks?');"
-									href="<?= $this->url->get('/Blog/feedbacks/delete/') . $record->id ?>"
-									class="btn btn-danger"
-								>
-									<i class="fas fa-trash-alt"></i> Delete
-								</a>
-							</div>
-						</td>
-					</tr>
-					<?php } ?><?php } else { ?><tr>
-						<td colspan="5">No feedbacks found</td>
-					</tr><?php } ?></tbody>
-			</table>
-		</div>
+		<?php foreach ($record as $data) { ?>
+		<form action="<?= $this->url->get('/Blog/posts/update/') . $data->id ?>" method="POST">
+			<input type="hidden" name="id" value="<?= $data->id ?>" />
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input
+					type="text"
+					class="form-control"
+					id="title"
+					name="title"
+					placeholder="Enter Title"
+					value="<?= $data->title ?>"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="subtitle">Sub-Title</label>
+				<input
+					type="text"
+					class="form-control"
+					id="subtitle"
+					name="subtitle"
+					placeholder="Enter Sub-title"
+					value="<?= $data->subtitle ?>"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="content">Content</label>
+				<textarea class="form-control" id="content" name="content"><?= $data->content ?></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Update</button>
+		</form>
+		<?php } ?>
 	</div>
-</div>
-
+</div><?php } else { ?><h1>There is no such record</h1><?php } ?>
 					</div>
 					<!-- /.container-fluid -->
 				</div>

@@ -30,7 +30,7 @@
 			<!-- Blog Post -->
 			{%- if records|length > 0 -%} {% for record in records %}
 			<div class="post-preview">
-				<a href="/blog/{{ record.id }}">
+				<a href="{{url('/Blog/blog/show/') ~ record.id }}">
 					<h2 class="post-title">
 						{{ record.title }}
 					</h2>

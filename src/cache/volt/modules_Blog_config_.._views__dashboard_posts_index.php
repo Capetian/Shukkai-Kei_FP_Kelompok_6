@@ -69,7 +69,10 @@
 						<th>Created At</th>
 						<th>
 							<div class="d-flex justify-content-center">
-								<a href="/dashboard/posts/create" class="btn btn-primary">
+								<a
+									href="<?= $this->url->get('/Blog/posts/create') ?>"
+									class="btn btn-primary"
+								>
 									<i class="fas fa-plus"></i> Create
 								</a>
 							</div>
@@ -97,18 +100,21 @@
 						<td><?= $record->created_at ?></td>
 						<td>
 							<div class="d-flex justify-content-center">
-								<a href="/blog/<?= $record->id ?>" class="btn btn-info">
+								<a
+									href="<?= $this->url->get('/Blog/blog/show/') . $record->id ?>"
+									class="btn btn-info"
+								>
 									<i class="fas fa-eye"></i>
 								</a>
 								<a
-									href="/dashboard/posts/<?= $record->id ?>/edit"
+									href="<?= $this->url->get('/Blog/posts/edit/') . $record->id ?>"
 									class="btn btn-warning"
 								>
 									<i class="fas fa-edit"></i>
 								</a>
 								<a
 									onclick="return confirm('Are you sure you want to delete this item?');"
-									href="/dashboard/posts/<?= $record->id ?>/delete"
+									href="<?= $this->url->get('/Blog/posts/delete/') . $record->id ?>"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-trash-alt"></i>
@@ -116,7 +122,9 @@
 							</div>
 						</td>
 					</tr>
-					<?php } ?><?php } ?></tbody>
+					<?php } ?><?php } else { ?><tr>
+						<td colspan="5">No posts found</td>
+					</tr><?php } ?></tbody>
 			</table>
 		</div>
 	</div>

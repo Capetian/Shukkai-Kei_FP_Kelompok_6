@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Blog\Controllers;
 
 
@@ -17,9 +18,8 @@ class MembersController extends ControllerBase
         $this->view->pick('dashboard/members/index');
     }
 
-    public function updateAction()
+    public function updateAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
 
         $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Users WHERE id = :id:";
 

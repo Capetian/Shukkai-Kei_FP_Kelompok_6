@@ -69,7 +69,10 @@
 						<th>Created At</th>
 						<th>
 							<div class="d-flex justify-content-center">
-								<a href="/dashboard/changelogs/create" class="btn btn-primary">
+								<a
+									href="<?= $this->url->get('/Blog/changelogs/create') ?>"
+									class="btn btn-primary"
+								>
 									<i class="fas fa-plus"></i> Create
 								</a>
 							</div>
@@ -96,22 +99,25 @@
 						<td><?= $record->username ?></td>
 						<td><?= $record->created_at ?></td>
 						<td>
-							<div class="d-flex justify-content-center"><?php if ($record->setted == 1) { ?><a href="/dashboard/changelogs/unset" class="btn btn-secondary">
+							<div class="d-flex justify-content-center"><?php if ($record->setted == 1) { ?><a
+									href="<?= $this->url->get('/Blog/changelogs/unset') ?>"
+									class="btn btn-secondary"
+								>
 									<i class="fas fa-wrench"></i> Unset
 								</a><?php } else { ?><a
-									href="/dashboard/changelogs/<?= $record->id ?>/set"
+									href="<?= $this->url->get('/Blog/changelogs/set/') . $record->id ?>"
 									class="btn btn-success"
 								>
 									<i class="fas fa-wrench"></i> Set
 								</a><?php } ?><a
-									href="/dashboard/changelogs/<?= $record->id ?>/edit"
+									href="<?= $this->url->get('/Blog/changelogs/edit/') . $record->id ?>"
 									class="btn btn-warning"
 								>
 									<i class="fas fa-edit"></i>
 								</a>
 								<a
 									onclick="return confirm('Are you sure you want to delete this item?');"
-									href="/dashboard/changelogs/<?= $record->id ?>/delete"
+									href="<?= $this->url->get('/Blog/changelogs/delete/') . $record->id ?>"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-trash-alt"></i>
@@ -120,7 +126,9 @@
 						</td>
 					</tr>
 
-					<?php } ?><?php } ?></tbody>
+					<?php } ?><?php } else { ?><tr>
+						<td colspan="5">No changelogs found</td>
+					</tr><?php } ?></tbody>
 			</table>
 		</div>
 	</div>

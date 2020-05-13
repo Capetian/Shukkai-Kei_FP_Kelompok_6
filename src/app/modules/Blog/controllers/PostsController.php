@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Blog\Controllers;
 
 use ShukkaiKei\Modules\Blog\Models\Users;
@@ -51,10 +52,8 @@ class PostsController extends ControllerBase
         $this->response->redirect('/Blog/posts');
     }
 
-    public function editAction()
+    public function editAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
-
         $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Posts WHERE id = :id:";
         $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);
         $this->view->setVar('record', $record);
@@ -82,10 +81,8 @@ class PostsController extends ControllerBase
         $this->response->redirect('/Blog/posts');
     }
 
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        $id = $this->dispatcher->getParam('id');
-
         $phql = "DELETE FROM ShukkaiKei\Modules\Blog\Models\Posts WHERE id = :id:";
         $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);
 

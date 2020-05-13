@@ -55,7 +55,7 @@
 							<div class="d-flex justify-content-center">
 								<a
 									onclick="return confirm('Are you sure you want to update this account?');"
-									href="/dashboard/members/{{ record.id }}/update"
+									href="{{ url('/Blog/members/update/') ~ record.id }}"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-ban"></i> Deactivate
@@ -66,7 +66,7 @@
 							<div class="d-flex justify-content-center">
 								<a
 									onclick="return confirm('Are you sure you want to update this account?');"
-									href="/dashboard/members/{{ record.id }}/update"
+									href="{{ url('/Blog/members/update/') ~ record.id }}"
 									class="btn btn-success"
 								>
 									<i class="fas fa-check"></i> Activate
@@ -75,7 +75,11 @@
 							{%- endif -%}
 						</td>
 					</tr>
-					{%- endif -%} {% endfor %} {%- endif -%}
+					{%- endif -%} {% endfor %} {%- else -%}
+					<tr>
+						<td colspan="5">No members found</td>
+					</tr>
+					{%- endif -%}
 				</tbody>
 			</table>
 		</div>

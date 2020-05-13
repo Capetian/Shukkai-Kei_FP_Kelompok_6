@@ -18,7 +18,7 @@
 	</div>
 	<div class="card-body">
 		{% for data in record %}
-		<form action="/dashboard/posts/{{ data.id }}/update" method="POST">
+		<form action="{{url('/Blog/posts/update/') ~ data.id }}" method="POST">
 			<input type="hidden" name="id" value="{{ data.id }}" />
 			<div class="form-group">
 				<label for="title">Title</label>

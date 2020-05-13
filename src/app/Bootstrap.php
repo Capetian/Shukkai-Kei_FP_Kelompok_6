@@ -21,17 +21,17 @@ class Bootstrap extends Application
 		$this->registerModules($this->modules);
 		$test = $this->getModules();
 		$response = $this->handle(
-            $_SERVER["REQUEST_URI"]
-        );
-    
-        $response->send();
+			$_SERVER["REQUEST_URI"]
+		);
+
+		$response->send();
 	}
 
 	private function _registerServices()
 	{
 
 
-		$defaultModule = 'Forum';
+		$defaultModule = 'Blog';
 
 		$container = new FactoryDefault();
 		$config = require APP_PATH . '/config/config.php';
@@ -40,7 +40,7 @@ class Bootstrap extends Application
 		include_once APP_PATH . '/config/loader.php';
 		include_once APP_PATH . '/config/services.php';
 		include_once APP_PATH . '/config/routes.php';
-		
+
 		$this->setDI($container);
 	}
 }

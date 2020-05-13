@@ -88,7 +88,7 @@
 						<td><?php if ($record->active == 1) { ?><div class="d-flex justify-content-center">
 								<a
 									onclick="return confirm('Are you sure you want to update this account?');"
-									href="/dashboard/members/<?= $record->id ?>/update"
+									href="<?= $this->url->get('/Blog/members/update/') . $record->id ?>"
 									class="btn btn-danger"
 								>
 									<i class="fas fa-ban"></i> Deactivate
@@ -96,13 +96,15 @@
 							</div><?php } else { ?><div class="d-flex justify-content-center">
 								<a
 									onclick="return confirm('Are you sure you want to update this account?');"
-									href="/dashboard/members/<?= $record->id ?>/update"
+									href="<?= $this->url->get('/Blog/members/update/') . $record->id ?>"
 									class="btn btn-success"
 								>
 									<i class="fas fa-check"></i> Activate
 								</a>
 							</div><?php } ?></td>
-					</tr><?php } ?><?php } ?><?php } ?></tbody>
+					</tr><?php } ?><?php } ?><?php } else { ?><tr>
+						<td colspan="5">No members found</td>
+					</tr><?php } ?></tbody>
 			</table>
 		</div>
 	</div>
