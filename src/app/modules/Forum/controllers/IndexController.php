@@ -16,10 +16,8 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-
-
-        $subforums = $this->toJson(Subforums::join('threads')->limit(5)->get());
-        $threads = $this->toJson(Threads::where("title", "%", ".")->join('replies')->orderBy("updated_at", "desc")->limit(5)->get());
+        $subforums = Subforums::join('threads')->limit(5)->get();
+        $threads = Threads::where("title", "%", ".")->join('replies')->orderBy("updated_at", "desc")->limit(5)->get();
         $this->view->subforums = $subforums;
         $this->view->threads = $threads;
 
@@ -28,7 +26,7 @@ class IndexController extends ControllerBase
 
     public function loginAction()
     {
-        
+
         $this->view->pick('index/login');
     }
 

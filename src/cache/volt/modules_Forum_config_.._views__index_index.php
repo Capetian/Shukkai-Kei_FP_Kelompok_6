@@ -75,9 +75,12 @@
 					</thead>
 					<tbody class="th text-center">
 						<?php foreach ($threads as $thread) { ?>
+						<?php $idx = $this->length($thread->replies); ?>
+						<?php $reply = $thread->replies[$idx - 1]; ?>
+						<?php $t = json_decode($thread); ?>
 						<tr>
 							<th scope="row" class="th text-justify">
-								<a href="<?= $this->url->get('/Forum/thread/show/') . $thread->id ?>"
+								<a href="<?= $this->url->get('/Forum/thread/show/') . $t->id ?>"
 									><h5><?= $thread->title ?></h5></a
 								>
 							</th>
@@ -88,13 +91,13 @@
 							<th scope="row"><?= date('j-M-y', $thread->created_at) ?></th>
 							<th scope="row">
 								<div class="row">
-									<?= $thread->replies[$idx - 1]->content ?>
+									<?= $reply->content ?>
 								</div>
 								<div class="row">
-									<?= $thread->replies[$idx - 1]->user->username ?>
+									<?= $reply->user->username ?>
 								</div>
 								<div class="row">
-									<?= date('j-M-y', $thread->replies[$idx - 1]->created_at) ?>
+									<?= date('j-M-y', $reply->created_at) ?>
 								</div>
 							</th>
 						</tr>

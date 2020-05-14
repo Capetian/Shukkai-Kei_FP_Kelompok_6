@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
 use ShukkaiKei\Modules\Forum\Controllers\ControllerBase;
@@ -23,11 +25,11 @@ class SubforumController extends ControllerBase
     {
         $q = Subforums::findById($this->toID($param));
         $name = $q->name;
-        $threads = $this->toJson(Threads::where("title","%", ".")->join('replies')->where('subforum_id',$this->toID($param))->inWhere('pinned',[false,true])
-        ->orderBy('pinned', 'desc')->get());
+        $threads = Threads::where("title", "%", ".")->join('replies')->where('subforum_id', $this->toID($param))->inWhere('pinned', [false, true])
+            ->orderBy('pinned', 'desc')->get();
         $this->view->threads = $threads;
         $this->view->name = $name;
 
         $this->view->pick('subforum/show');
-    } 
+    }
 }
