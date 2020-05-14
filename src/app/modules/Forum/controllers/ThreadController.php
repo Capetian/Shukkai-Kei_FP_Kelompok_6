@@ -10,7 +10,7 @@ class ThreadController extends ControllerBase
 
     public function createAction()
     {
-        if (isset($this->session->auth['uid'])) {
+        if (isset($this->session->auth['username'])) {
             $subforums = $this->toJson(Subforums::get());
             $this->view->subforums = $subforums;
             $this->view->pick('thread/create');  

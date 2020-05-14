@@ -16,6 +16,7 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+use ShukkaiKei\Services\AccountManager as AccountManager;
 /**
  * Shared configuration service
  */
@@ -178,5 +179,14 @@ $container->setShared(
         $security->setWorkFactor(12);
 
         return $security;
+    }
+);
+
+
+$container->setShared(
+    'account',
+    function () use ($container) {
+        $accountManager = new AccountManager($container->getShared('security'), $container->getShared('session'));
+        return $accountManager;
     }
 );

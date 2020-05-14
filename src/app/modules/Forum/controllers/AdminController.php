@@ -29,9 +29,9 @@ class AdminController extends ControllerBase
 
     public function storeSubAction()
     {
-        $user = Subforums::init();
+        $subforum = Subforums::init();
         $request = $this->checkCSRF($this->request);
-        $user->fill(
+        $subforum->fill(
             [
                 'name' => $request->getPost('name'),
                 'description' => $request->getPost('desc'),

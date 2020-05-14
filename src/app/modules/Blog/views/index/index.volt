@@ -29,7 +29,7 @@
 			{%- if records|length > 0 -%} {% for record in records %}
 			
 			<div class="post-preview">
-				{%- if session.get('auth')['is_admin'] == 1 -%}
+				{%- if session.get('auth')['role'] == 2 -%}
 				<a href="Blog/blog/{{ record.id }}">
 				{%- else -%}
 				<a href="Blog/auth/login">
@@ -65,7 +65,7 @@
 
 			<!-- Pager -->
 			<div class="clearfix">
-				{%- if session.get('auth')['is_admin'] == 1 -%}
+				{%- if session.get('auth')['role'] == 2 -%}
 				<a class="btn btn-primary float-right" href="{{ url('Blog/blog') }}"
 					>
 					{%- else -%}

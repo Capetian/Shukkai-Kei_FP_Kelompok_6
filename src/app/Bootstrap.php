@@ -19,7 +19,7 @@ class Bootstrap extends Application
 		 * Load modules
 		 */
 		$this->registerModules($this->modules);
-		$test = $this->getModules();
+		
 		$response = $this->handle(
 			$_SERVER["REQUEST_URI"]
 		);

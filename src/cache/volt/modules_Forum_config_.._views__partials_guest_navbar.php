@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="<?= $this->url->get('/') ?>">Navbar</a>
+	<a class="navbar-brand" href="<?= $this->url->get('/Forum') ?>">Navbar</a>
 	<button
 		class="navbar-toggler"
 		type="button"
@@ -15,7 +15,7 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="<?= $this->url->get('/') ?>"
+				<a class="nav-link" href="<?= $this->url->get('/Forum') ?>"
 					>Home <span class="sr-only">(current)</span></a
 				>
 			</li>
@@ -48,12 +48,12 @@
 		</form>
 		<ul class="navbar-nav ml-3">
 			<li class="nav-item">
-				<a class="nav-link" href="<?= $this->url->get('/Forum/index/register') ?>"
+				<a class="nav-link" href="<?= $this->url->get('/Forum/auth/register') ?>"
 					>Register <span class="sr-only"></span
 				></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?= $this->url->get('/Forum/index/login') ?>">Login</a>
+				<a class="nav-link" href="<?= $this->url->get('/Forum/auth/login') ?>">Login</a>
 			</li>
 		</ul>
 	</div>

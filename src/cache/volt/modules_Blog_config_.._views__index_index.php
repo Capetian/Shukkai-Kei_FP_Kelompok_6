@@ -41,7 +41,7 @@
 
 			<!-- Blog Post --><?php if ($this->length($records) > 0) { ?><?php foreach ($records as $record) { ?>
 			
-			<div class="post-preview"><?php if ($this->session->get('auth')['is_admin'] == 1) { ?><a href="Blog/blog/<?= $record->id ?>"><?php } else { ?><a href="Blog/auth/login"><?php } ?><h2 class="post-title">
+			<div class="post-preview"><?php if ($this->session->get('auth')['role'] == 2) { ?><a href="Blog/blog/<?= $record->id ?>"><?php } else { ?><a href="Blog/auth/login"><?php } ?><h2 class="post-title">
 						<?= $record->title ?>
 					</h2>
 					<h3 class="post-subtitle">
@@ -66,7 +66,7 @@
 					<a class="page-link" href="#">Newer &rarr;</a>
 				</li>
 			</ul> --><?php } else { ?><h3>No posts found</h3><?php } ?><!-- Pager -->
-			<div class="clearfix"><?php if ($this->session->get('auth')['is_admin'] == 1) { ?><a class="btn btn-primary float-right" href="<?= $this->url->get('Blog/blog') ?>"
+			<div class="clearfix"><?php if ($this->session->get('auth')['role'] == 2) { ?><a class="btn btn-primary float-right" href="<?= $this->url->get('Blog/blog') ?>"
 					><?php } else { ?><a class="btn btn-primary float-right" href="<?= $this->url->get('Blog/auth/login') ?>"><?php } ?>More Posts &rarr;</a
 				>
 			</div>

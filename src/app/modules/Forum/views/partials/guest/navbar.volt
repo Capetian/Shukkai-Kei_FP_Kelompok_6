@@ -48,12 +48,12 @@
 		</form>
 		<ul class="navbar-nav ml-3">
 			<li class="nav-item">
-				<a class="nav-link" href="{{ url('/Forum/index/register') }}"
+				<a class="nav-link" href="{{ url('/Forum/auth/register') }}"
 					>Register <span class="sr-only"></span
 				></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ url('/Forum/index/login') }}">Login</a>
+				<a class="nav-link" href="{{ url('/Forum/auth/login') }}">Login</a>
 			</li>
 		</ul>
 	</div>

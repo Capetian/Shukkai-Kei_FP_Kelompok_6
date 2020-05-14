@@ -3,6 +3,13 @@
 use Phalcon\Loader;
 
 $loader = new Loader();
+/**
+ * Register module classes
+ */
+$loader->registerClasses([
+    'ShukkaiKei\Modules\Blog\Models\Users' => APP_PATH . '/modules/Blog/models/Users.php',
+    'ShukkaiKei\Modules\Forum\Models\Users'      => APP_PATH . '/modules/Forum/models/Users.php'
+]);
 
 /**
  * Register Namespaces
@@ -10,14 +17,8 @@ $loader = new Loader();
 $loader->registerNamespaces([
     'ShukkaiKei\Models' => APP_PATH . '/common/models/',
     'ShukkaiKei'        => APP_PATH . '/common/library/',
+    'ShukkaiKei\Services'        => APP_PATH . '/common/services/',
 ]);
 
-/**
- * Register module classes
- */
-$loader->registerClasses([
-    'ShukkaiKei\Modules\Frontend\Module' => APP_PATH . '/modules/frontend/Module.php',
-    'ShukkaiKei\Modules\Cli\Module'      => APP_PATH . '/modules/cli/Module.php'
-]);
 
 $loader->register();

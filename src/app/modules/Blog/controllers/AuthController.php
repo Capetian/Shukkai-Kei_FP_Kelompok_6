@@ -48,7 +48,9 @@ class AuthController extends ControllerBase
                 $this->flashSession->error("User is banned from the server");
                 $this->response->redirect('/Blog/auth/login');
             } else {
-                $this->session->set('auth', ['username' => $data['username'], 'is_admin' => $user->is_admin]);
+                $role = $user->is_admin ? 2 : 0;
+                $this->account->login($data['username'], $role );
+
                 // $this->flashSession->success('Login success');
                 $this->response->redirect('/Blog');
             }
@@ -64,29 +66,15 @@ class AuthController extends ControllerBase
 
     public function storeAction()
     {
-
-        $new_user = new Users();
-
+        $account = $this->account;
         $data['username'] = $this->request->getPost('username');
         $data['email'] = $this->request->getPost('email');
         $data['password'] = $this->request->getPost('password');
         $data['pass_confirm'] = $this->request->getPost('pass_confirm');
 
-        $username_taken = Users::findFirst([
-            'conditions' => 'username = :username:',
-            'bind' => [
-                'username' => $data['username']
+        $username_taken = $account->findUsername($data['username']);
 
-            ],
-        ]);
-
-        $email_taken = Users::findFirst([
-            'conditions' => 'email = :email:',
-            'bind' => [
-                'email' => $data['email']
-
-            ],
-        ]);
+        $email_taken = $account->findEmail($data['email']);
 
         if ($username_taken) {
             $this->flashSession->error('Username has been taken');
@@ -98,14 +86,8 @@ class AuthController extends ControllerBase
             $this->flashSession->error('Password and Confirm password are not identical');
             $this->response->redirect('/Blog/auth/register');
         } else {
-            $new_user->username = $data['username'];
-            $new_user->email = $data['email'];
-            $new_user->password = $this->security->hash($data['password']);
-            $new_user->is_admin = 0;
-            $new_user->active = 1;
-            $new_user->save();
-            $this->session->set('auth', ['username' => $new_user->username, 'is_admin' => $new_user->is_admin]);
-
+            $account->register( $data['username'], $data['email'],$data['password'], 0 );
+            $account->login($data['username'], 0 );
             // $this->flashSession->success('Register success');
             $this->response->redirect('/Blog');
         }

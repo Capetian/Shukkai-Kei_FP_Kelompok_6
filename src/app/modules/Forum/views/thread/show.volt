@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="row"> 
-                                        {% if  (session.get('auth')['uid'] == reply.user.id  or session.get('auth')['role'] > 0) and reply.deleted == false %}
+                                        {% if  (session.get('forum')['uid'] == reply.user.id  or session.get('auth')['role'] > 0) and reply.deleted == false %}
                                             <div class="modal" id="myModal">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -154,7 +154,7 @@
                     {% endfor  %}
                 </tbody>
             </table>
-            {% if root.locked == 0 and session.get('auth')['uid'] is defined  %} 
+            {% if root.locked == 0 and session.get('forum')['uid'] is defined  %} 
             <div class="row">
                 <div class="col">
                     <div class="h4 mb-3">Reply to Thread</div>
@@ -162,7 +162,7 @@
                             <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
                             <input type="hidden" name="r_id" value="{{ rt.id }}">
-                            <input type="hidden" name="r_uid" value="{{ session.get('auth')['uid'] }}">
+                            <input type="hidden" name="r_uid" value="{{ session.get('forum')['uid'] }}">
                             <input type="hidden" name="r_sid" value="{{sb.id }}">
                             <div class="form-group row pb-1">
                                 <div class="col-md">

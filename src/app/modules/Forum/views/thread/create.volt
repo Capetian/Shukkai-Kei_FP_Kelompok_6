@@ -26,7 +26,7 @@
                             </select>
                         </div>
                     </div>
-                     <input type="hidden" name="uid" value="{{ session.get('auth')['uid'] }}">
+                     <input type="hidden" name="uid" value="{{ session.get('forum')['uid'] }}">
                     <div class="form-group row">
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="title" name="title" placeholder="Thread Topic">

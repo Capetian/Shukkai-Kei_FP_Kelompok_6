@@ -5,7 +5,7 @@
     <div class="container mt-5 mx-auto">
         <div class="row ">
             <div class="col bg-light p-5">
-                {% if  session.get('auth')['uid'] == usr.id  %}
+                {% if  session.get('forum')['uid'] == usr.id  %}
                 <div class="h2 mb-5">Your Profile</div>
                 {% else %}
                 <div class="h2 mb-5">{{usr.username}}'s Profile</div>
@@ -19,11 +19,11 @@
                 {% set role = "Admin" %}
                 {% endif %}
                 <h5 class="text-muted"> {{ role }} </h5>
-                {% if  session.get('auth')['uid'] == usr.id  %}
+                {% if  session.get('forum')['uid'] == usr.id  %}
                 <form action="{{url('Forum/user/edit') }}" method="POST">
                     <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
-                     <input type="hidden" name="uid" value="{{ session.get('auth')['uid'] }}">
+                     <input type="hidden" name="uid" value="{{ session.get('auth')['username'] }}">
                     <div class="form-group row">
                         <div class="col-md-3">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Your new email" value="{{usr.email}}">

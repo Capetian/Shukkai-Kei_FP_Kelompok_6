@@ -23,7 +23,7 @@
             <div class="col-md-auto bg-light border rounded p-5">
                 <div class="text-center">
                     <div class="h2 mb-5">Login</div>
-                    <form action="<?= $this->url->get('Forum/index/signin') ?>" method="POST">
+                    <form action="<?= $this->url->get('Forum/auth/signin') ?>" method="POST">
                     
                         <div class="form-group row">
                             <div class="col-md-3 text-right">

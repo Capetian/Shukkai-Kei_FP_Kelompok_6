@@ -6,7 +6,7 @@
             <div class="col-md-auto bg-light border rounded p-5">
                 <div class="text-center">
                     <div class="h2 mb-5">Register</div>
-                    <form action="{{url('Forum/index/store') }}" method="POST">
+                    <form action="{{url('Forum/auth/store') }}" method="POST">
                     
                         <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
                             value='<?php echo $this->security->getToken() ?>'/>
@@ -34,6 +34,14 @@
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 text-right">
+                                <label for="password">Confirm Password</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="password" class="form-control" id="pass_confirm" name="pass_confirm">
+                            </div>
+                        </div>                        
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
                 </div>

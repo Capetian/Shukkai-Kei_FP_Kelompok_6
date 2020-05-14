@@ -34,7 +34,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ url('/Blog/blog') }}">Blog</a>
 				</li>
-				{%- if session.get('auth')['is_admin'] == 1 -%}
+				{%- if session.get('auth')['role'] == 2-%}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ url('/Blog/dashboard') }}">Dashboard</a>
 				</li>

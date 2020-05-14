@@ -16,13 +16,14 @@
 					</thead>
 					<tbody class="th text-center">
 						{% for thread in threads %}
+						{% set idx = thread.replies | length %}
+						{% set reply = thread.replies[idx - 1] %}
+						{% set t = thread | json_decode %}
 						<tr>
 							<th scope="row" class="th text-justify">
-								<a href="{{url('/Forum/thread/show/') ~ thread.id}}"
-									><h5>{{ thread.title }}</h5></a
-								>
+								<a href="{{url('/Forum/thread/show/') ~ t.id}}"
+									><h5>{{ thread.title }}</h5></a>
 							</th>
-							{% set idx = thread.replies | length %}
 							<th scope="row">
 								<h6>{{ idx }}</h6>
 							</th>
@@ -30,13 +31,13 @@
 							<th scope="row">
 								<div class="col">
 									<div class="row">
-										{{ thread.replies[idx - 1].content }}
+										{{ reply.content }}
 									</div>
 									<div class="row">
-										{{ thread.replies[idx - 1].user.username }}
+										{{ reply.user.username }}
 									</div>
 									<div class="row">
-										{{ date('j-M-y', thread.replies[idx - 1].created_at) }}
+										{{ date('j-M-y', reply.created_at) }}
 									</div>
 								</div>
 							</th>

@@ -51,12 +51,12 @@
 			<li class="nav-item active">
 				<a
 					class="nav-link"
-					href="<?= $this->url->get('/Forum/user/show/') . $this->session->get('auth')['uid'] ?>"
+					href="<?= $this->url->get('/Forum/user/show/') . $this->session->get('forum')['uid'] ?>"
 					><?= $this->session->get('auth')['username'] ?><span class="sr-only"></span
 				></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?= $this->url->get('/Forum/index/logout') ?>">Logout</a>
+				<a class="nav-link" href="<?= $this->url->get('/Forum/auth/logout') ?>">Logout</a>
 			</li>
 		</ul>
 	</div>

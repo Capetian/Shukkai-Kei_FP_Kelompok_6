@@ -51,12 +51,12 @@
 			<li class="nav-item active">
 				<a
 					class="nav-link"
-					href="{{url('/Forum/user/show/') ~ session.get('auth')['uid'] }}"
+					href="{{url('/Forum/user/show/') ~ session.get('forum')['uid'] }}"
 					>{{ session.get('auth')['username'] }}<span class="sr-only"></span
 				></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ url('/Forum/index/logout') }}">Logout</a>
+				<a class="nav-link" href="{{ url('/Forum/auth/logout') }}">Logout</a>
 			</li>
 		</ul>
 	</div>

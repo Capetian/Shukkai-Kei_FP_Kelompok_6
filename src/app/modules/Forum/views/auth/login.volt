@@ -6,14 +6,14 @@
             <div class="col-md-auto bg-light border rounded p-5">
                 <div class="text-center">
                     <div class="h2 mb-5">Login</div>
-                    <form action="{{url('Forum/index/signin') }}" method="POST">
+                    <form action="{{url('Forum/auth/signin') }}" method="POST">
                     
                         <div class="form-group row">
                             <div class="col-md-3 text-right">
-                                <label for="em">Email</label>
+                                <label for="em">Username</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="email" class="form-control" id="em" name="em">
+                                <input type="username" class="form-control" id="us" name="us">
                             </div>
                         </div>
                         <div class="form-group row">
