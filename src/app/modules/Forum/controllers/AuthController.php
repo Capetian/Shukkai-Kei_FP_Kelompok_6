@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace ShukkaiKei\Modules\Forum\Controllers;
-
 use ShukkaiKei\Modules\Forum\Models\Users;
 
 
@@ -30,9 +29,9 @@ class AuthController extends ControllerBase
         $data['password'] = $this->request->getPost('password');
         $data['pass_confirm'] = $this->request->getPost('pass_confirm');
 
-        $username_taken = $account->checkUsername($data['username']);
+        $username_taken = $account->findUsername($data['username']);
 
-        $email_taken = $account->checkEmail($data['email']);
+        $email_taken = $account->findEmail($data['email']);
 
         if ($username_taken) {
             $this->flashSession->error('Username has been taken');
@@ -44,9 +43,9 @@ class AuthController extends ControllerBase
             $this->flashSession->error('Password and Confirm password are not identical');
             $this->response->redirect('/Forum/auth/register');
         } else {
-            $account->register($data['username'], $data['email'], $data['password'], 0);
-            $account->login($data['username'], 0);
-            // $this->session->set('forum', ['uid' => $data['id']]);
+            $account->register( $data['username'], $data['email'],$data['password'], 0 );
+            $account->login($data['username'], 0 );
+            $this->session->set('forum', ['uid' => $user['id']]);
             // $this->flashSession->success('Register success');
             $this->response->redirect('/Forum');
         }
@@ -62,7 +61,7 @@ class AuthController extends ControllerBase
 
         if ($user['id'] != null) {
             if ($this->security->checkHash($pass, $user['password']) === true) {
-                $this->account->login($user['username'], $user['role']);
+                $this->account->login($user['username'],$user['role']);
                 $this->session->set('forum', ['uid' => $user['id']]);
             } else {
                 $this->flashSession->error('Password anda salah');

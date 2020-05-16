@@ -40,7 +40,7 @@
                 <form action="<?= $this->url->get('Forum/user/edit') ?>" method="POST">
                     <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
-                     <input type="hidden" name="uid" value="<?= $this->session->get('auth')['username'] ?>">
+                     <input type="hidden" name="uid" value="<?= $this->session->get('forum')['uid'] ?>">
                     <div class="form-group row">
                         <div class="col-md-3">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Your new email" value="<?= $usr->email ?>">

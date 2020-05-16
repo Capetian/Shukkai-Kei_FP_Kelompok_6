@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace ShukkaiKei\Modules\Blog\Controllers;
-
 use ShukkaiKei\Modules\Blog\Models\Users;
 
 
@@ -50,7 +49,7 @@ class AuthController extends ControllerBase
                 $this->response->redirect('/Blog/auth/login');
             } else {
                 $role = $user->is_admin ? 2 : 0;
-                $this->account->login($data['username'], $role);
+                $this->account->login($data['username'], $role );
 
                 // $this->flashSession->success('Login success');
                 $this->response->redirect('/Blog');
@@ -73,9 +72,9 @@ class AuthController extends ControllerBase
         $data['password'] = $this->request->getPost('password');
         $data['pass_confirm'] = $this->request->getPost('pass_confirm');
 
-        $username_taken = $account->checkUsername($data['username']);
+        $username_taken = $account->findUsername($data['username']);
 
-        $email_taken = $account->checkEmail($data['email']);
+        $email_taken = $account->findEmail($data['email']);
 
         if ($username_taken) {
             $this->flashSession->error('Username has been taken');
@@ -87,8 +86,8 @@ class AuthController extends ControllerBase
             $this->flashSession->error('Password and Confirm password are not identical');
             $this->response->redirect('/Blog/auth/register');
         } else {
-            $account->register($data['username'], $data['email'], $data['password'], 0);
-            $account->login($data['username'], 0);
+            $account->register( $data['username'], $data['email'],$data['password'], 0 );
+            $account->login($data['username'], 0 );
             // $this->flashSession->success('Register success');
             $this->response->redirect('/Blog');
         }
