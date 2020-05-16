@@ -87,6 +87,7 @@
             <table class="table border-top border-bottom">
                 <tbody class="th text-center">
                     <?php foreach ($replies as $reply) { ?>
+                    
                     <tr>
                         <th>
                             <div class="row text-justify">
@@ -110,7 +111,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="row"> 
-                                        <?php if (($this->session->get('auth')['uid'] == $reply->user->id || $this->session->get('auth')['role'] > 0) && $reply->deleted == false) { ?>
+                                        <?php if (($this->session->get('forum')['uid'] == $reply->user->id || $this->session->get('auth')['role'] > 0) && $reply->deleted == false) { ?>
                                             <div class="modal" id="myModal">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -171,7 +172,7 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <?php if ($root->locked == 0 && isset($this->session->get('auth')['uid'])) { ?> 
+            <?php if ($root->locked == 0 && isset($this->session->get('forum')['uid'])) { ?> 
             <div class="row">
                 <div class="col">
                     <div class="h4 mb-3">Reply to Thread</div>
@@ -179,7 +180,7 @@
                             <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
                             <input type="hidden" name="r_id" value="<?= $rt->id ?>">
-                            <input type="hidden" name="r_uid" value="<?= $this->session->get('auth')['uid'] ?>">
+                            <input type="hidden" name="r_uid" value="<?= $this->session->get('forum')['uid'] ?>">
                             <input type="hidden" name="r_sid" value="<?= $sb->id ?>">
                             <div class="form-group row pb-1">
                                 <div class="col-md">

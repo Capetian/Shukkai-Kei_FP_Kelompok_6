@@ -70,6 +70,7 @@
             <table class="table border-top border-bottom">
                 <tbody class="th text-center">
                     {% for reply in replies %}
+                    
                     <tr>
                         <th>
                             <div class="row text-justify">
