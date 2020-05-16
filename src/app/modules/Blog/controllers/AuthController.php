@@ -72,9 +72,9 @@ class AuthController extends ControllerBase
         $data['password'] = $this->request->getPost('password');
         $data['pass_confirm'] = $this->request->getPost('pass_confirm');
 
-        $username_taken = $account->findUsername($data['username']);
+        $username_taken = $account->checkUsername($data['username']);
 
-        $email_taken = $account->findEmail($data['email']);
+        $email_taken = $account->checkEmail($data['email']);
 
         if ($username_taken) {
             $this->flashSession->error('Username has been taken');
