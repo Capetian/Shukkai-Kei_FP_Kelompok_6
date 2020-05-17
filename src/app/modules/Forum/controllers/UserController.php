@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
 use ShukkaiKei\Modules\Forum\Models\Users;
@@ -18,19 +20,22 @@ class UserController extends ControllerBase
     {
         $request = $this->checkCSRF($this->request);
         $changes = [];
-        $uid = $request->getPost("uid");
+        $uid = $request->getPost("uid", "string");
 
-        $em = $request->getPost("email", "email" );
+        $em = $request->getPost("email", "email");
+
         $pw = $request->getPost("password", "string");
         $confirm = $request->getPost("confirm", "string");
-        if ( $em !== "" ) {
+        if ($em !== "") {
             $changes['email'] = $em;
         }
-        if ( $pw !== "" && ($pw == $confirm) ) {
+        if ($pw !== "" && ($pw == $confirm)) {
             $changes['password'] = $this->security->hash($pw);
         }
-        $user = Users::where("_id",$this->toID($uid))->update($changes);
-        $this->response->redirect("/Forum/user/show/".$uid);
-
+        $user = Users::where("_id", $this->toID($uid))->update($changes);
+        if ($user) {
+            $this->flashSession->success('Update data berhasil');
+        }
+        $this->response->redirect("/Forum/user/show/" . $uid);
     }
 }

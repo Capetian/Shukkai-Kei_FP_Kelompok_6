@@ -5,7 +5,7 @@
 	<!-- Sidebar - Brand -->
 	<a
 		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="<?= $this->url->get('Blog/') ?>"
+		href="<?= $this->url->get('/Blog/') ?>"
 	>
 		<div class="sidebar-brand-icon rotate-n-15">
 			出会系
@@ -16,11 +16,19 @@
 	<!-- Divider -->
 	<hr class="sidebar-divider my-0" />
 
-	<!-- Nav Item - Dashboard -->
-	<li class="nav-item active">
-		<a class="nav-link" href="<?= $this->url->get('Blog/dashboard') ?>">
-			<i class="fas fa-fw fa-tachometer-alt"></i>
-			<span>Dashboard</span></a
+	<!-- Nav Item - Blog Data -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= $this->url->get('/Blog/dashboard') ?>">
+			<i class="fas fa-blog"></i>
+			<span>Blog Data</span></a
+		>
+	</li>
+
+	<!-- Nav Item - Forum Data -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= $this->url->get('/Forum/dashboard') ?>">
+			<i class="fab fa-discourse"></i>
+			<span>Forum Data</span></a
 		>
 	</li>
 
@@ -29,12 +37,12 @@
 
 	<!-- Heading -->
 	<div class="sidebar-heading">
-		Data
+		Blog
 	</div>
 
 	<!-- Nav Item - Posts -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('Blog/posts') ?>">
+		<a class="nav-link" href="<?= $this->url->get('/Blog/posts') ?>">
 			<i class="fas fa-fw fa-paper-plane"></i>
 			<span>Posts</span></a
 		>
@@ -42,7 +50,7 @@
 
 	<!-- Nav Item - Member -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('Blog/members') ?>">
+		<a class="nav-link" href="<?= $this->url->get('/Blog/members') ?>">
 			<i class="fas fa-fw fa-user-friends"></i>
 			<span>Members</span></a
 		>
@@ -50,7 +58,7 @@
 
 	<!-- Nav Item - Comments -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('Blog/comments') ?>">
+		<a class="nav-link" href="<?= $this->url->get('/Blog/comments') ?>">
 			<i class="fas fa-fw fa-comments"></i>
 			<span>Comments</span></a
 		>
@@ -58,9 +66,17 @@
 
 	<!-- Nav Item - Feedback -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('Blog/feedbacks') ?>">
+		<a class="nav-link" href="<?= $this->url->get('/Blog/feedbacks') ?>">
 			<i class="fas fa-fw fa-smile"></i>
 			<span>Feedbacks</span></a
+		>
+	</li>
+
+	<!-- Nav Item - Changelog -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= $this->url->get('/Blog/changelogs') ?>">
+			<i class="fas fa-fw fa-exchange-alt"></i>
+			<span>Changelogs</span></a
 		>
 	</li>
 
@@ -69,14 +85,22 @@
 
 	<!-- Heading -->
 	<div class="sidebar-heading">
-		Log
+		Forum
 	</div>
+
+	<!-- Nav Item - Subforum -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= $this->url->get('/Forum/dashboard/subforum') ?>">
+			<i class="fas fa-stream"></i>
+			<span>Subforum</span></a
+		>
+	</li>
 
 	<!-- Nav Item - Changelog -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('Blog/changelogs') ?>">
-			<i class="fas fa-fw fa-exchange-alt"></i>
-			<span>Changelogs</span></a
+		<a class="nav-link" href="<?= $this->url->get('/Forum/dashboard/thread') ?>">
+			<i class="fas fa-clone"></i>
+			<span>Thread</span></a
 		>
 	</li>
 

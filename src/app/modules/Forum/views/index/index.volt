@@ -1,97 +1,44 @@
-{% extends 'app.volt' %} {% block content %}
-<div class="container mt-5">
-	<div class="row-center mt-5">
-		<div class="col-md-auto bg-white">
-			<div class="text-center">
-				<table class="table table-hover">
-					<thead class="thead bg-primary text-white text-center">
-						<tr>
-							<th scope="col" class="th text-justify"><h5>Subforums</h5></th>
-							<th scope="col"><h6>Posts</h6></th>
-						</tr>
-					</thead>
-					<tbody class="th text-center">
-						{% for subforum in subforums %}
-						<tr>
-							<th scope="row" class="th text-justify">
-								<div class="col-5">
-									<a href="{{url('/Forum/subforum/show/') ~ subforum.id}}"
-										><h5>{{ subforum.name }}</h5></a
-									>
-									<h6 class="text-muted text-truncate">
-										{{ subforum.description }}
-									</h6>
-								</div>
-							</th>
-							<th scope="row">
-								<h6>{{ subforum.threads | length }}</h6>
-							</th>
-						</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+{% extends 'home.volt' %} {% block content %}
+
+<!-- Page Header -->
+<header
+	class="masthead"
+	style="background-color: lightgreen; margin-bottom: 0px; height: 100vh;"
+>
+	<div class="overlay" style="height: 100vh;"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>Forum</h1>
+					<span class="subheading">Search what you need: </span>
+					<span class="subheading" style="padding-top: 50px;">
+						<form
+							class="form-inline ml-2 justify-content-center w-100"
+							action="{{ url('/Forum/index/search') }}"
+							method="POST"
+						>
+							<input
+								type="hidden"
+								name="<?php echo $this->security->getTokenKey() ?>"
+								value="<?php echo $this->security->getToken() ?>"
+							/>
+							<input
+								class="form-control mr-sm-2 w-100 mb-3"
+								name="search"
+								type="search"
+								placeholder="Find keyword"
+								aria-label="Search"
+							/>
+							<button class="btn btn-dark my-2 my-sm-0" type="submit">
+								Search
+							</button>
+						</form>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row-center">
-		<div class="col-md-auto bg-white">
-			<a href="{{ url('/Forum/subforum/index') }}">Browse Subforums >></a>
-		</div>
-	</div>
-</div>
-<div class="container mt-1">
-	<div class="row-center mt-5">
-		<div class="col-md-auto bg-white">
-			<div class="text-center">
-				<table class="table table-hover">
-					<thead class="thead bg-primary text-white text-center">
-						<tr>
-							<th scope="col" class="th text-justify">
-								<h5>Lastest Discussions</h5>
-							</th>
-							<th scope="col"><h6>Replies</h6></th>
-							<th scope="col"><h6>Created</h6></th>
-							<th scope="col"><h6>Last Post</h6></th>
-						</tr>
-					</thead>
-					<tbody class="th text-center">
-						{% for thread in threads %}
-						{% set idx = thread.replies | length %}
-						{% set reply = thread.replies[idx - 1] %}
-						{% set t = thread | json_decode %}
-						<tr>
-							<th scope="row" class="th text-justify">
-								<a href="{{url('/Forum/thread/show/') ~ t.id}}"
-									><h5>{{ thread.title }}</h5></a
-								>
-							</th>
-							{% set idx = thread.replies | length %}
-							<th scope="row">
-								<h6>{{ idx }}</h6>
-							</th>
-							<th scope="row">{{ date('j-M-y', thread.created_at) }}</th>
-							<th scope="row">
-								<div class="row">
-									{{ reply.content }}
-								</div>
-								<div class="row">
-									{{ reply.user.username }}
-								</div>
-								<div class="row">
-									{{ date('j-M-y', reply.created_at) }}
-								</div>
-							</th>
-						</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row-center">
-		<div class="col-md-auto bg-white">
-			<a href="{{ url('/Forum/thread/create') }}">Create a Thread >></a>
-		</div>
-	</div>
-</div>
+</header>
+
 {% endblock %}

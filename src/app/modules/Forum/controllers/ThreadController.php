@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
 use ShukkaiKei\Modules\Forum\Models\Subforums;
@@ -13,13 +15,12 @@ class ThreadController extends ControllerBase
         if (isset($this->session->auth['username'])) {
             $subforums = $this->toJson(Subforums::get());
             $this->view->subforums = $subforums;
-            $this->view->pick('thread/create');  
-        }
-        else {
+            $this->view->pick('thread/create');
+        } else {
             $this->response->redirect('/Forum');
         }
     }
-    
+
     public function storeAction()
     {
         $thread = Threads::init();
@@ -31,15 +32,13 @@ class ThreadController extends ControllerBase
                 'subforum_id' => $request->getPost('sid'),
                 'user_id' => $request->getPost('uid'),
                 'pinned' => false,
-                'locked'=> false,
+                'locked' => false,
             ]
 
         )->save()->toArray();
         $this->reply($root['id'], $root['user_id'], $root['subforum_id'], $request->getPost('content'));
-
-       
     }
-    
+
     private function reply($id, $uid, $sid, $content)
     {
         $thread = Threads::init();
@@ -53,20 +52,20 @@ class ThreadController extends ControllerBase
             ]
 
         )->save();
-        $this->response->redirect('/Forum/thread/show/'.$id);
+        $this->response->redirect('/Forum/thread/show/' . $id);
     }
 
     public function replyAction()
     {
         $request = $this->checkCSRF($this->request);
-        $this->reply($request->getPost('r_id'),$request->getPost('r_uid'),$request->getPost('r_sid'), $request->getPost('content'));
+        $this->reply($request->getPost('r_id'), $request->getPost('r_uid'), $request->getPost('r_sid'), $request->getPost('content'));
     }
 
     public function showAction($param)
     {
         $id = $this->toID($param);
         $root = Threads::findById($id);
-        $replies = $this->toJson(Threads::join('user')->where('root',$id )->get());
+        $replies = $this->toJson(Threads::join('user')->where('root', $id)->get());
 
         $this->view->replies = $replies;
         $this->view->root = $root;
@@ -83,14 +82,14 @@ class ThreadController extends ControllerBase
         $post->edited_by = $this->session->auth['username'];
         $id = $post->root;
         $post->save();
-        $this->response->redirect("/Forum/thread/show/".$id);
+        $this->response->redirect("/Forum/thread/show/" . $id);
     }
 
     public function deleteAction()
     {
         $request = $this->checkCSRF($this->request);
-        $id = $this->toID($request->getPost("d_id")) ;
-        $posts = Threads::where("_id", $id)->orWhere("root",$id)->delete();
+        $id = $this->toID($request->getPost("d_id"));
+        $posts = Threads::where("_id", $id)->orWhere("root", $id)->delete();
         $this->response->redirect("/Forum/subforum/index");
     }
 
@@ -98,9 +97,9 @@ class ThreadController extends ControllerBase
     {
         $request = $this->checkCSRF($this->request);
         $id = $request->getPost("l_id");
-        $val = $request->getPost("l_val","bool");
+        $val = $request->getPost("l_val", "bool");
         $post = Threads::where("_id", $this->toID($id))->update(["locked" => $val]);
-        $this->response->redirect("/Forum/thread/show/".$id);
+        $this->response->redirect("/Forum/thread/show/" . $id);
     }
 
 
@@ -108,9 +107,9 @@ class ThreadController extends ControllerBase
     {
         $request = $this->checkCSRF($this->request);
         $id = $request->getPost("p_id");
-        $val = $request->getPost("p_val","bool");
-        $post = Threads::where("_id", $this->toID($id) )->update(["pinned" => $val]);
-        $this->response->redirect("/Forum/thread/show/".$id);
+        $val = $request->getPost("p_val", "bool");
+        $post = Threads::where("_id", $this->toID($id))->update(["pinned" => $val]);
+        $this->response->redirect("/Forum/thread/show/" . $id);
     }
 
 
@@ -124,7 +123,11 @@ class ThreadController extends ControllerBase
         $post->edited_by = $this->session->auth['username'];
         $id = $post->root;
         $post->save();
-        $this->response->redirect("/Forum/thread/show/".$id);
+        $this->response->redirect("/Forum/thread/show/" . $id);
     }
 
+    public function listAction()
+    {
+        $this->view->pick('dashboard/thread/list');
+    }
 }

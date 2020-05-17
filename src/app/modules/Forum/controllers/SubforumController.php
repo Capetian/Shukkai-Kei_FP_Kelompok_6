@@ -32,4 +32,9 @@ class SubforumController extends ControllerBase
 
         $this->view->pick('subforum/show');
     }
+
+    public function listAction()
+    {
+        $this->view->pick('dashboard/subforum/list');
+    }
 }

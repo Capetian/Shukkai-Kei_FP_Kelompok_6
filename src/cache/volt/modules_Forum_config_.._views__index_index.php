@@ -7,119 +7,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $this->tag->rendertitle() ?>
         <?= $this->assets->outputCSS('header') ?>
+        <?= $this->assets->outputCSS('font') ?>
+		<?= $this->assets->outputCSS('appCss') ?>
 
         <!-- <link rel="shortcut icon" type="image/x-icon" href="<?= $this->url->get('img/favicon.ico') ?>"/> -->
     </head>
 
     <body>
+        <?= $this->partial('partials/navbar') ?>
         
-        <?php if ($this->session->has('auth')) { ?>
-        <?= $this->partial('partials/auth/navbar') ?><?php } else { ?><?= $this->partial('partials/guest/navbar') ?>
-        <?php } ?> 
-        
-        
-<div class="container mt-5">
-	<div class="row-center mt-5">
-		<div class="col-md-auto bg-white">
-			<div class="text-center">
-				<table class="table table-hover">
-					<thead class="thead bg-primary text-white text-center">
-						<tr>
-							<th scope="col" class="th text-justify"><h5>Subforums</h5></th>
-							<th scope="col"><h6>Posts</h6></th>
-						</tr>
-					</thead>
-					<tbody class="th text-center">
-						<?php foreach ($subforums as $subforum) { ?>
-						<tr>
-							<th scope="row" class="th text-justify">
-								<div class="col-5">
-									<a href="<?= $this->url->get('/Forum/subforum/show/') . $subforum->id ?>"
-										><h5><?= $subforum->name ?></h5></a
-									>
-									<h6 class="text-muted text-truncate">
-										<?= $subforum->description ?>
-									</h6>
-								</div>
-							</th>
-							<th scope="row">
-								<h6><?= $this->length($subforum->threads) ?></h6>
-							</th>
-						</tr>
-						<?php } ?>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row-center">
-		<div class="col-md-auto bg-white">
-			<a href="<?= $this->url->get('/Forum/subforum/index') ?>">Browse Subforums >></a>
-		</div>
-	</div>
-</div>
-<div class="container mt-1">
-	<div class="row-center mt-5">
-		<div class="col-md-auto bg-white">
-			<div class="text-center">
-				<table class="table table-hover">
-					<thead class="thead bg-primary text-white text-center">
-						<tr>
-							<th scope="col" class="th text-justify">
-								<h5>Lastest Discussions</h5>
-							</th>
-							<th scope="col"><h6>Replies</h6></th>
-							<th scope="col"><h6>Created</h6></th>
-							<th scope="col"><h6>Last Post</h6></th>
-						</tr>
-					</thead>
-					<tbody class="th text-center">
-						<?php foreach ($threads as $thread) { ?>
-						<?php $idx = $this->length($thread->replies); ?>
-						<?php $reply = $thread->replies[$idx - 1]; ?>
-						<?php $t = json_decode($thread); ?>
-						<tr>
-							<th scope="row" class="th text-justify">
-								<a href="<?= $this->url->get('/Forum/thread/show/') . $t->id ?>"
-									><h5><?= $thread->title ?></h5></a
-								>
-							</th>
-							<?php $idx = $this->length($thread->replies); ?>
-							<th scope="row">
-								<h6><?= $idx ?></h6>
-							</th>
-							<th scope="row"><?= date('j-M-y', $thread->created_at) ?></th>
-							<th scope="row">
-								<div class="row">
-									<?= $reply->content ?>
-								</div>
-								<div class="row">
-									<?= $reply->user->username ?>
-								</div>
-								<div class="row">
-									<?= date('j-M-y', $reply->created_at) ?>
-								</div>
-							</th>
-						</tr>
-						<?php } ?>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row-center">
-		<div class="col-md-auto bg-white">
-			<a href="<?= $this->url->get('/Forum/thread/create') ?>">Create a Thread >></a>
-		</div>
-	</div>
-</div>
 
-        
+<!-- Page Header -->
+<header
+	class="masthead"
+	style="background-color: lightgreen; margin-bottom: 0px; height: 100vh;"
+>
+	<div class="overlay" style="height: 100vh;"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>Forum</h1>
+					<span class="subheading">Search what you need: </span>
+					<span class="subheading" style="padding-top: 50px;">
+						<form
+							class="form-inline ml-2 justify-content-center w-100"
+							action="<?= $this->url->get('/Forum/index/search') ?>"
+							method="POST"
+						>
+							<input
+								type="hidden"
+								name="<?php echo $this->security->getTokenKey() ?>"
+								value="<?php echo $this->security->getToken() ?>"
+							/>
+							<input
+								class="form-control mr-sm-2 w-100 mb-3"
+								name="search"
+								type="search"
+								placeholder="Find keyword"
+								aria-label="Search"
+							/>
+							<button class="btn btn-dark my-2 my-sm-0" type="submit">
+								Search
+							</button>
+						</form>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
 
     </body>
  
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <?= $this->assets->outputJS('js') ?>
+	<?= $this->assets->outputJS('appJs') ?>
 
 </html>

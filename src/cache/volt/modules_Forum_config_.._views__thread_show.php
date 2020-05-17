@@ -7,16 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $this->tag->rendertitle() ?>
         <?= $this->assets->outputCSS('header') ?>
+        <?= $this->assets->outputCSS('font') ?>
+		<?= $this->assets->outputCSS('appCss') ?>
 
         <!-- <link rel="shortcut icon" type="image/x-icon" href="<?= $this->url->get('img/favicon.ico') ?>"/> -->
     </head>
 
     <body>
-        
-        <?php if ($this->session->has('auth')) { ?>
-        <?= $this->partial('partials/auth/navbar') ?><?php } else { ?><?= $this->partial('partials/guest/navbar') ?>
-        <?php } ?> 
-        
+        <?= $this->partial('partials/navbar') ?>
          
 <?php $rt = json_decode($root); ?>
 <?php $sb = json_decode($root->subforum); ?>
@@ -110,7 +108,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="row"> 
-                                        <?php if (($this->session->get('auth')['uid'] == $reply->user->id || $this->session->get('auth')['role'] > 0) && $reply->deleted == false) { ?>
+                                        <?php if (($this->session->get('forum')['uid'] == $reply->user->id || $this->session->get('auth')['role'] > 0) && $reply->deleted == false) { ?>
                                             <div class="modal" id="myModal">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -171,7 +169,7 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <?php if ($root->locked == 0 && isset($this->session->get('auth')['uid'])) { ?> 
+            <?php if ($root->locked == 0 && isset($this->session->get('forum')['uid'])) { ?> 
             <div class="row">
                 <div class="col">
                     <div class="h4 mb-3">Reply to Thread</div>
@@ -179,7 +177,7 @@
                             <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
                             <input type="hidden" name="r_id" value="<?= $rt->id ?>">
-                            <input type="hidden" name="r_uid" value="<?= $this->session->get('auth')['uid'] ?>">
+                            <input type="hidden" name="r_uid" value="<?= $this->session->get('forum')['uid'] ?>">
                             <input type="hidden" name="r_sid" value="<?= $sb->id ?>">
                             <div class="form-group row pb-1">
                                 <div class="col-md">
@@ -199,12 +197,11 @@
 
 
 
-        
-
-
+        <?= $this->partial('partials/footer') ?>
     </body>
  
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <?= $this->assets->outputJS('js') ?>
+	<?= $this->assets->outputJS('appJs') ?>
 
 </html>

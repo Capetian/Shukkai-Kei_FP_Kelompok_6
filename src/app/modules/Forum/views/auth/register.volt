@@ -1,51 +1,85 @@
-{% extends 'app.volt' %}
+{% extends 'auth.volt' %} {% block content %}
 
-{% block content %} 
-    <div class="container mt-5 mx-auto">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto bg-light border rounded p-5">
-                <div class="text-center">
-                    <div class="h2 mb-5">Register</div>
-                    <form action="{{url('Forum/auth/store') }}" method="POST">
-                    
-                        <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
-                            value='<?php echo $this->security->getToken() ?>'/>
-                        <div class="form-group row">
-                            <div class="col-md-3 text-right">
-                                <label for="username">Username</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="username" name="username">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-3 text-right">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="email" class="form-control" id="email" name="email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-3 text-right">
-                                <label for="password">Password</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="password" class="form-control" id="password" name="password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-3 text-right">
-                                <label for="password">Confirm Password</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="password" class="form-control" id="pass_confirm" name="pass_confirm">
-                            </div>
-                        </div>                        
-                        <button type="submit" class="btn btn-primary">Register</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100 p-t-50 p-b-90">
+			<form
+				class="login100-form validate-form flex-sb flex-w"
+				action="{{ url('/Forum/auth/store') }}"
+				method="POST"
+			>
+				<span class="login100-form-title p-b-51">
+					Register
+				</span>
+
+				<div
+					class="wrap-input100 validate-input m-b-16"
+					data-validate="Username is required"
+				>
+					<input
+						class="input100"
+						type="text"
+						name="username"
+						placeholder="Username"
+					/>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div
+					class="wrap-input100 validate-input m-b-16"
+					data-validate="Email is required"
+				>
+					<input
+						class="input100"
+						type="email"
+						name="email"
+						placeholder="E-mail"
+					/>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div
+					class="wrap-input100 validate-input m-b-16"
+					data-validate="Password is required"
+				>
+					<input
+						class="input100"
+						type="password"
+						name="password"
+						placeholder="Password"
+					/>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div
+					class="wrap-input100 validate-input m-b-16"
+					data-validate="Confirm Password is required"
+				>
+					<input
+						class="input100"
+						type="password"
+						name="pass_confirm"
+						placeholder="Confirm Password"
+					/>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-login100-form-btn m-t-17">
+					<button type="submit" class="login100-form-btn">
+						Register
+					</button>
+				</div>
+			</form>
+			<hr />
+			<form action="{{ url('/Forum') }}">
+				<div class="container-login100-form-btn m-t-17">
+					<button class="back100-form-btn">
+						Back to Homepage
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 {% endblock %}

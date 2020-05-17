@@ -7,16 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $this->tag->rendertitle() ?>
         <?= $this->assets->outputCSS('header') ?>
+        <?= $this->assets->outputCSS('font') ?>
+		<?= $this->assets->outputCSS('appCss') ?>
 
         <!-- <link rel="shortcut icon" type="image/x-icon" href="<?= $this->url->get('img/favicon.ico') ?>"/> -->
     </head>
 
     <body>
-        
-        <?php if ($this->session->has('auth')) { ?>
-        <?= $this->partial('partials/auth/navbar') ?><?php } else { ?><?= $this->partial('partials/guest/navbar') ?>
-        <?php } ?> 
-        
+        <?= $this->partial('partials/navbar') ?>
         
 <div class="container mt-5">
 	<div class="row-center mt-5">
@@ -74,12 +72,11 @@
 	</div>
 </div>
 
-        
-
-
+        <?= $this->partial('partials/footer') ?>
     </body>
  
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <?= $this->assets->outputJS('js') ?>
+	<?= $this->assets->outputJS('appJs') ?>
 
 </html>

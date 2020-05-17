@@ -1,4 +1,4 @@
-{% extends 'app.volt' %} {% block content %}
+{% extends 'auth.volt' %} {% block content %}
 <div class="container mt-5 mx-auto">
 	<div class="row">
 		<nav aria-label="breadcrumb">

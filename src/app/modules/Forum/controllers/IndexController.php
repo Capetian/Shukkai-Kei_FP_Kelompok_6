@@ -16,12 +16,6 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-
-        $subforums = $this->toJson(Subforums::join('threads')->limit(5)->get());
-        $threads = Threads::where("title", "%", ".")->join('replies')->orderBy("updated_at", "desc")->limit(5)->get();
-        $this->view->subforums = $subforums;
-        $this->view->threads = $threads;
-
         $this->view->pick('index/index');
     }
 
@@ -29,8 +23,19 @@ class IndexController extends ControllerBase
     public function searchAction()
     {
         $request = $this->checkCSRF($this->request);
-        $results =  $this->toJson(Threads::where("title", "%", $request->getPost("search"))->join('user')->get());;
+        $results =  Threads::where("title", "%", $request->getPost("search"))->join('user')->get();
+
         $this->view->results = $results;
-        $this->view->pick('/Forum/index/search');
+        $this->view->pick('index/search');
+    }
+
+    public function forumAction()
+    {
+        $subforums = $this->toJson(Subforums::join('threads')->limit(5)->get());
+        $threads = Threads::where("title", "%", ".")->join('replies')->orderBy("updated_at", "desc")->limit(5)->get();
+        $this->view->subforums = $subforums;
+        $this->view->threads = $threads;
+
+        $this->view->pick('index/forum');
     }
 }
