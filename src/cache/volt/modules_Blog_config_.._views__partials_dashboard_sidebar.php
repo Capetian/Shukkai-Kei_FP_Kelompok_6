@@ -90,7 +90,7 @@
 
 	<!-- Nav Item - Subforum -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('/Forum/dashboard/subforum') ?>">
+		<a class="nav-link" href="<?= $this->url->get('/Forum/subforum/list') ?>">
 			<i class="fas fa-stream"></i>
 			<span>Subforum</span></a
 		>
@@ -98,7 +98,7 @@
 
 	<!-- Nav Item - Changelog -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= $this->url->get('/Forum/dashboard/thread') ?>">
+		<a class="nav-link" href="<?= $this->url->get('/Forum/thread/list') ?>">
 			<i class="fas fa-clone"></i>
 			<span>Thread</span></a
 		>

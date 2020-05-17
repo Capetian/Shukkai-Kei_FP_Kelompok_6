@@ -18,7 +18,7 @@
 
 <div class="card text-center">
 	<div class="card-header font-weight-bold">
-		<h3>Subforum ({{ subforums | length }} found)</h3>
+		<h3>Subforum</h3>
 	</div>
 	<div class="card-body pb-5">
 		<table class="table table-bordered table-hover w-100 h-100">
@@ -46,9 +46,12 @@
 						</div>
 					</th>
 					<th>
-                        
-                            
+						{%- if session.has('auth') -%} {%- if session.get('auth')['role'] ==
+						2-%}
 							<a href="{{ url('/Forum/admin/createSub') }}" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a>
+						{%-endif-%}
+						{%-endif-%}
+						
 						
 					</th>
 				</tr>
@@ -108,7 +111,7 @@
 
 <div class="card text-center">
 	<div class="card-header font-weight-bold">
-		<h5>Lastest Discussions ({{ threads | length }} thread)</h5>
+		<h5>Lastest Discussions</h5>
 	</div>
 	<div class="card-body pb-5">
 		<table class="table table-bordered table-hover w-100 h-100">
@@ -165,10 +168,11 @@
 						</div>
 					</td>
 					<td>
+					
 						<div
 							class="d-flex justify-content-center align-items-center w-100 h-100"
 						>
-							<form action="{{url('/Forum/thread/show/') ~ t.id}}}}">
+							<form action="{{url('/Forum/thread/show/') ~ t.id}}">
 								<input
 									type="submit"
 									class="btn btn-outline-success"

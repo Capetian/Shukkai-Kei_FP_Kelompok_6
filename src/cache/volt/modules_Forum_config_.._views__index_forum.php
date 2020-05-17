@@ -35,7 +35,7 @@
 
 <div class="card text-center">
 	<div class="card-header font-weight-bold">
-		<h3>Subforum (<?= $this->length($subforums) ?> found)</h3>
+		<h3>Subforum</h3>
 	</div>
 	<div class="card-body pb-5">
 		<table class="table table-bordered table-hover w-100 h-100">
@@ -62,12 +62,7 @@
 							Posts
 						</div>
 					</th>
-					<th>
-                        
-                            
-							<a href="<?= $this->url->get('/Forum/admin/createSub') ?>" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a>
-						
-					</th>
+					<th><?php if ($this->session->has('auth')) { ?><?php if ($this->session->get('auth')['role'] == 2) { ?><a href="<?= $this->url->get('/Forum/admin/createSub') ?>" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a><?php } ?><?php } ?></th>
 				</tr>
 			</thead>
 			<tbody><?php if ($this->length($subforums) > 0) { ?><?php foreach ($subforums as $subforum) { ?>
@@ -121,7 +116,7 @@
 
 <div class="card text-center">
 	<div class="card-header font-weight-bold">
-		<h5>Lastest Discussions (<?= $this->length($threads) ?> thread)</h5>
+		<h5>Lastest Discussions</h5>
 	</div>
 	<div class="card-body pb-5">
 		<table class="table table-bordered table-hover w-100 h-100">
@@ -175,10 +170,11 @@
 						</div>
 					</td>
 					<td>
+					
 						<div
 							class="d-flex justify-content-center align-items-center w-100 h-100"
 						>
-							<form action="<?= $this->url->get('/Forum/thread/show/') . $t->id ?>}}">
+							<form action="<?= $this->url->get('/Forum/thread/show/') . $t->id ?>">
 								<input
 									type="submit"
 									class="btn btn-outline-success"
