@@ -5,7 +5,7 @@
 		<div class="wrap-login100 p-t-50 p-b-90">
 			<form
 				class="login100-form validate-form flex-sb flex-w"
-				action="{{ url('Blog/auth/store') }}"
+				action="{{ url('/Forum/auth/store') }}"
 				method="POST"
 			>
 				<span class="login100-form-title p-b-51">
@@ -71,7 +71,7 @@
 				</div>
 			</form>
 			<hr />
-			<form action="{{ url('Blog/') }}">
+			<form action="{{ url('/Blog/') }}">
 				<div class="container-login100-form-btn m-t-17">
 					<button class="back100-form-btn">
 						Back to Homepage

@@ -59,7 +59,7 @@
 							Subforum
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-							9999
+							<?= $this->length($subforums) ?>
 						</div>
 					</div>
 					<div class="col-auto">
@@ -82,7 +82,7 @@
 							Thread
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-							9999
+							<?= $this->length($threads) ?>
 						</div>
 					</div>
 					<div class="col-auto">

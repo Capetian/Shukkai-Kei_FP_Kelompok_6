@@ -21,7 +21,7 @@
 							Subforum
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-							9999
+							{{ subforums | length }}
 						</div>
 					</div>
 					<div class="col-auto">
@@ -44,7 +44,7 @@
 							Thread
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-							9999
+							{{ threads | length }}
 						</div>
 					</div>
 					<div class="col-auto">

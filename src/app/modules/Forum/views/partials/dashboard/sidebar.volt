@@ -90,7 +90,7 @@
 
 	<!-- Nav Item - Subforum -->
 	<li class="nav-item">
-		<a class="nav-link" href="{{ url('/Forum/subforum/list') }}">
+		<a class="nav-link" href="{{ url('/Forum/admin/listSub') }}">
 			<i class="fas fa-stream"></i>
 			<span>Subforum</span></a
 		>
@@ -98,7 +98,7 @@
 
 	<!-- Nav Item - Changelog -->
 	<li class="nav-item">
-		<a class="nav-link" href="{{ url('/Forum/thread/list') }}">
+		<a class="nav-link" href="{{ url('/Forum/admin/listThread') }}">
 			<i class="fas fa-clone"></i>
 			<span>Thread</span></a
 		>

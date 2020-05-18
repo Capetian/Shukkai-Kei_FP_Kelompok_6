@@ -126,8 +126,5 @@ class ThreadController extends ControllerBase
         $this->response->redirect("/Forum/thread/show/" . $id);
     }
 
-    public function listAction()
-    {
-        $this->view->pick('dashboard/thread/list');
-    }
+
 }

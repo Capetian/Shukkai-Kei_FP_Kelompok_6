@@ -46,10 +46,10 @@
 				</li>
 				{%- else -%}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('/Blog/auth/login') }}">Login</a>
+					<a class="nav-link" href="{{ url('/Forum/auth/login') }}">Login</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('/Blog/auth/register') }}"
+					<a class="nav-link" href="{{ url('/Forum/auth/register') }}"
 						>Register</a
 					>
 				</li>
