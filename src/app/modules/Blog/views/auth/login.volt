@@ -4,7 +4,7 @@
 		<div class="wrap-login100 p-t-50 p-b-90">
 			<form
 				class="login100-form validate-form flex-sb flex-w"
-				action="{{ url('/Forum/auth/signin') }}"
+				action="{{ url('/Blog/auth/signin') }}"
 				method="POST"
 			>
 				<span class="login100-form-title p-b-51">

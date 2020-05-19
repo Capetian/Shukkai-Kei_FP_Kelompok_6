@@ -37,10 +37,10 @@
 						><?= $this->session->get('auth')['username'] ?>, Logout</a
 					>
 				</li><?php } else { ?><li class="nav-item">
-					<a class="nav-link" href="<?= $this->url->get('/Forum/auth/login') ?>">Login</a>
+					<a class="nav-link" href="<?= $this->url->get('/Blog/auth/login') ?>">Login</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?= $this->url->get('/Forum/auth/register') ?>"
+					<a class="nav-link" href="<?= $this->url->get('/Blog/auth/register') ?>"
 						>Register</a
 					>
 				</li><?php } ?></ul>
