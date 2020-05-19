@@ -153,19 +153,6 @@ $container->setShared('session', function () {
     return $session;
 });
 
-$container->setShared('view', function () {
-    $config = $this->getConfig();
-
-    $view = new View();
-    $view->setViewsDir($config->get('application')->errorsDir);
-    
-    $view->registerEngines([
-        '.volt'  => 'voltShared',
-    ]);
-
-    return $view;
-
-});
 
 $container->set(
     'flashSession',
