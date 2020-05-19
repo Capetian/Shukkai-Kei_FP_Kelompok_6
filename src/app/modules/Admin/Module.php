@@ -9,8 +9,6 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 use Phalcon\Config;
-
-
 class Module implements ModuleDefinitionInterface
 {
     /**
@@ -35,40 +33,13 @@ class Module implements ModuleDefinitionInterface
      *
      * @param DiInterface $di
      */
-    public function registerServices(DiInterface $di)
+    public function registerServices(DiInterface $di = null)
     {
-        /**
-         * Try to load local configuration
-         */
-        if (file_exists(__DIR__ . '/config/config.php')) {
-            
-            $config = $di['config'];
-            
-            $override = new Config(include __DIR__ . '/config/config.php');
+        $moduleConfig = require __DIR__ . '/config/config.php';
 
-            if ($config instanceof Config) {
-                $config->merge($override);
-            } else {
-                $config = $override;
-            }
-        }
+        $di->get('config')->merge($moduleConfig);
 
-        /**
-         * Setting up the view component
-         */
-        $di['view'] = function () {
-            $config = $this->getConfig();
-
-            $view = new View();
-            $view->setViewsDir($config->get('application')->viewsDir);
-            
-            $view->registerEngines([
-                '.volt'  => 'voltShared',
-                '.phtml' => PhpEngine::class
-            ]);
-
-            return $view;
-        };
+        include_once __DIR__ . '/config/services.php';
 
     }
 }

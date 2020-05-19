@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="<?= $this->url->get('/Forum') ?>">Shukkaikei Forum</a>
+		<a class="navbar-brand" href="<?= $this->url->get('/Forum/index') ?>">Shukkaikei Forum</a>
 		<button
 			class="navbar-toggler navbar-toggler-right"
 			type="button"
@@ -24,7 +24,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="<?= $this->url->get('/Forum/forum') ?>">Forum</a>
 				</li><?php if ($this->session->has('auth')) { ?><?php if ($this->session->get('auth')['role'] == 2) { ?><li class="nav-item">
-					<a class="nav-link" href="<?= $this->url->get('/Forum/dashboard') ?>">Dashboard</a>
+					<a class="nav-link" href="<?= $this->url->get('/Admin') ?>">Dashboard</a>
 				</li><?php } ?><li class="nav-item">
 					<a
 						class="nav-link"

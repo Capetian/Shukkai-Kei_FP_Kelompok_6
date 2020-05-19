@@ -2,7 +2,7 @@
 
 namespace ShukkaiKei\Services;
 
-use ShukkaiKei\Modules\Forum\Models\Users;
+use ShukkaiKei\Models\Forum\Users;
 
 class ForumAccountService implements AccountService
 {

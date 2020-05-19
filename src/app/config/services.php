@@ -153,6 +153,20 @@ $container->setShared('session', function () {
     return $session;
 });
 
+$container->setShared('view', function () {
+    $config = $this->getConfig();
+
+    $view = new View();
+    $view->setViewsDir($config->get('application')->errorsDir);
+    
+    $view->registerEngines([
+        '.volt'  => 'voltShared',
+    ]);
+
+    return $view;
+
+});
+
 $container->set(
     'flashSession',
     function () use ($container) {
@@ -182,6 +196,38 @@ $container->setShared(
     }
 );
 
+$container->setShared(
+    'dispatcher',
+    function () {
+        // Create an EventsManager
+        $eventsManager = new EventsManager();
+
+        // Attach a listener
+        $eventsManager->attach(
+            'dispatch:beforeException',
+            function (Event $event, $dispatcher, Exception $exception) {
+                // Handle 404 exceptions
+                if ($exception instanceof DispatchException) {
+                    $dispatcher->forward(
+                        [
+                            'module' => 'Forum',
+                            'controller' => 'error',
+                            'action'     => 'show404',
+                        ]
+                    );
+
+                    return false;
+                }
+            }
+        );
+        $dispatcher = new MvcDispatcher();
+
+        // Bind the EventsManager to the dispatcher
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    }
+);
 
 $container->setShared(
     'account',

@@ -1,6 +1,16 @@
 <?php
 
 $router = $container->getRouter();
+$router->removeExtraSlashes(true);
+$router->notFound(
+    [
+        'namespace' => 'ShukkaiKei\Modules\Forum\Controllers',
+        'module' => 'Forum',
+        'controller' => 'error',
+        'action'     => 'show404',
+    ]
+);
+
 
 $router->add('/', [
     'namespace' => $modules[$defaultModule]['controllerNamespace'],

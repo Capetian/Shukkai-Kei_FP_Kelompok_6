@@ -31,7 +31,7 @@
 				</li><?php if ($this->session->has('auth')) { ?><li class="nav-item">
 					<a class="nav-link" href="<?= $this->url->get('/Blog/blog') ?>">Blog</a>
 				</li><?php if ($this->session->get('auth')['role'] == 2) { ?><li class="nav-item">
-					<a class="nav-link" href="<?= $this->url->get('/Blog/dashboard') ?>">Dashboard</a>
+					<a class="nav-link" href="<?= $this->url->get('/Admin') ?>">Dashboard</a>
 				</li><?php } ?><li class="nav-item">
 					<a class="nav-link" href="<?= $this->url->get('/Blog/auth/logout') ?>"
 						><?= $this->session->get('auth')['username'] ?>, Logout</a

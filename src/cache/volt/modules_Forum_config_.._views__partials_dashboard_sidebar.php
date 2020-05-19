@@ -87,7 +87,12 @@
 	<div class="sidebar-heading">
 		Forum
 	</div>
-
+	<li class="nav-item">
+		<a class="nav-link" href="<?= $this->url->get('/Forum/admin/listUser') ?>">
+			<i class="fas fa-fw fa-user-friends"></i>
+			<span>Moderator</span></a
+		>
+	</li>
 	<!-- Nav Item - Subforum -->
 	<li class="nav-item">
 		<a class="nav-link" href="<?= $this->url->get('/Forum/admin/listSub') ?>">

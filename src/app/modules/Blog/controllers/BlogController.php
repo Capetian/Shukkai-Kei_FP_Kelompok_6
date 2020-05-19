@@ -10,7 +10,7 @@ class BlogController extends ControllerBase
 
     public function indexAction()
     {
-        $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Posts WHERE active = 1";
+        $phql = "SELECT * FROM ShukkaiKei\Models\Blog\Posts WHERE active = 1";
 
         $records = $this->modelsManager->executeQuery($phql);
         $this->view->setVar('records', $records);
@@ -18,11 +18,11 @@ class BlogController extends ControllerBase
 
     public function showAction($id)
     {
-        $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Posts WHERE id = :id: AND active = 1";
+        $phql = "SELECT * FROM ShukkaiKei\Models\Blog\Posts WHERE id = :id: AND active = 1";
 
         $records = $this->modelsManager->executeQuery($phql, ['id' => $id]);
 
-        $comment_phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Comments WHERE post_id = :id:";
+        $comment_phql = "SELECT * FROM ShukkaiKei\Models\Blog\Comments WHERE post_id = :id:";
 
         $comments = $this->modelsManager->executeQuery($comment_phql, ['id' => $id]);
 

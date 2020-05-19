@@ -2,7 +2,7 @@
 
 namespace ShukkaiKei\Services;
 
-use ShukkaiKei\Modules\Blog\Models\Users;
+use ShukkaiKei\Models\Blog\Users;
 
 class BlogAccountService implements AccountService
 {

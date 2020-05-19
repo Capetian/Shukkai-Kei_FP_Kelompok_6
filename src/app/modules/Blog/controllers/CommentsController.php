@@ -4,22 +4,12 @@ declare(strict_types=1);
 
 namespace ShukkaiKei\Modules\Blog\Controllers;
 
-use ShukkaiKei\Modules\Blog\Models\Users;
-use ShukkaiKei\Modules\Blog\Models\Comments;
+use ShukkaiKei\Models\Blog\Users;
+use ShukkaiKei\Models\Blog\Comments;
 
 class CommentsController extends ControllerBase
 {
 
-    public function indexAction()
-    {
-        $phql = "SELECT Comments.*, Posts.* FROM ShukkaiKei\Modules\Blog\Models\Comments Comments INNER JOIN ShukkaiKei\Modules\Blog\Models\Posts Posts ON Comments.post_id = Posts.id";
-
-        $records = $this->modelsManager->executeQuery($phql);
-        $this->view->setVar('records', $records);
-        // var_dump($records[0]['Comments']);
-
-        $this->view->pick('dashboard/comments/index');
-    }
 
     public function createAction()
     {
@@ -47,17 +37,4 @@ class CommentsController extends ControllerBase
         $this->response->redirect('/Blog/blog/show/' . $request['post_id']);
     }
 
-    public function deleteAction($id)
-    {
-
-        $phql = "DELETE FROM ShukkaiKei\Modules\Blog\Models\Comments WHERE id = :id:";
-        $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);
-
-        if ($record) {
-            $this->flashSession->success('Comment successfully deleted');
-        } else {
-            $this->flashSession->error('Failed to delete comment');
-        }
-        $this->response->redirect('/Blog/comments');
-    }
 }

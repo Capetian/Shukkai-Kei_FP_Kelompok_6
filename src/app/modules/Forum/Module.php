@@ -22,7 +22,6 @@ class Module implements ModuleDefinitionInterface
 
         $loader->registerNamespaces([
             'ShukkaiKei\Modules\Forum\Controllers' => __DIR__ . '/controllers/',
-            'ShukkaiKei\Modules\Forum\Models'      => __DIR__ . '/models/'
         ]);
 
         $loader->register();

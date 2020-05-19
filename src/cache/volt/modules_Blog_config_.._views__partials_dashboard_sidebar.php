@@ -90,6 +90,12 @@
 
 	<!-- Nav Item - Subforum -->
 	<li class="nav-item">
+		<a class="nav-link" href="<?= $this->url->get('/Forum/admin/listUser') ?>">
+			<i class="fas fa-fw fa-user-friends"></i>
+			<span>Moderator</span></a
+		>
+	</li>
+	<li class="nav-item">
 		<a class="nav-link" href="<?= $this->url->get('/Forum/admin/listSub') ?>">
 			<i class="fas fa-stream"></i>
 			<span>Subforum</span></a

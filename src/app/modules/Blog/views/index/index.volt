@@ -29,10 +29,10 @@
 			{%- if records|length > 0 -%} {% for record in records %}
 			
 			<div class="post-preview">
-				{%- if session.get('auth')['role'] == 2 -%}
+				{%- if session.has('auth') -%}
 				<a href="Blog/blog/{{ record.id }}">
 				{%- else -%}
-				<a href="Blog/auth/login">
+				<a href="Forum/auth/login">
 				{%- endif -%}
 					<h2 class="post-title">
 						{{ record.title }}

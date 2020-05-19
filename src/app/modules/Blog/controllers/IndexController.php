@@ -9,7 +9,7 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Posts WHERE active = 1 ORDER BY id DESC LIMIT 5";
+        $phql = "SELECT * FROM ShukkaiKei\Models\Blog\Posts WHERE active = 1 ORDER BY id DESC LIMIT 5";
 
         $records = $this->modelsManager->executeQuery($phql);
         $this->view->setVar('records', $records);

@@ -3,20 +3,17 @@
 use Phalcon\Loader;
 
 $loader = new Loader();
-/**
- * Register module classes
- */
+
 $loader->registerClasses([
-    'ShukkaiKei\Modules\Blog\Models\Users' => APP_PATH . '/modules/Blog/models/Users.php',
-    'ShukkaiKei\Modules\Forum\Models\Users'      => APP_PATH . '/modules/Forum/models/Users.php'
+    'ShukkaiKei\Modules\Forum\Controllers\ErrorController' => APP_PATH . '/modules/Forum/controllers/ErrorController.php',
 ]);
 
 /**
  * Register Namespaces
  */
 $loader->registerNamespaces([
-    'ShukkaiKei\Models' => APP_PATH . '/common/models/',
-    'ShukkaiKei'        => APP_PATH . '/common/library/',
+    'ShukkaiKei\Models\Forum' => APP_PATH . '/common/models/Forum',
+    'ShukkaiKei\Models\Blog' => APP_PATH . '/common/models/Blog',
     'ShukkaiKei\Services'        => APP_PATH . '/common/services/',
 ]);
 

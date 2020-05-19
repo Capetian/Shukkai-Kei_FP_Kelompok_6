@@ -24,7 +24,7 @@ return new \Phalcon\Config([
     ],
     'application' => [
         'appDir'         => APP_PATH . '/',
-        'modelsDir'      => APP_PATH . '/common/models/',
+        'errorsDir'      => APP_PATH . '/common/error/',
         'migrationsDir'  => APP_PATH . '/migrations/',
         'cacheDir'       => BASE_PATH . '/cache/',
         'baseUri'        => '/',

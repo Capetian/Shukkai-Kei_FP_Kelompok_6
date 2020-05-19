@@ -30,9 +30,9 @@ class UserController extends ControllerBase
             $changes['email'] = $em;
         }
         if ($pw !== "" && ($pw == $confirm)) {
-            $changes['password'] = $this->security->hash($pw);
+            $user = Users::where("_id", $this->toID($uid))->update($changes);
         }
-        $user = Users::where("_id", $this->toID($uid))->update($changes);
+        
         if ($user) {
             $this->flashSession->success('Update data berhasil');
         }

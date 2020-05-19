@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace ShukkaiKei\Modules\Blog\Controllers;
-use ShukkaiKei\Modules\Blog\Models\Users;
+use ShukkaiKei\Models\Blog\Users;
 
 
 class AuthController extends ControllerBase

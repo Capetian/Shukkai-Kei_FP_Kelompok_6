@@ -48,7 +48,7 @@
 					<th>
 						{%- if session.has('auth') -%} {%- if session.get('auth')['role'] ==
 						2-%}
-							<a href="{{ url('/Forum/admin/createSub') }}" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a>
+							<a href="{{ url('/Admin/subforum/create') }}" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a>
 						{%-endif-%}
 						{%-endif-%}
 						

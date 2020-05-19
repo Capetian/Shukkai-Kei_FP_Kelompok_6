@@ -62,7 +62,7 @@
 							Posts
 						</div>
 					</th>
-					<th><?php if ($this->session->has('auth')) { ?><?php if ($this->session->get('auth')['role'] == 2) { ?><a href="<?= $this->url->get('/Forum/admin/createSub') ?>" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a><?php } ?><?php } ?></th>
+					<th><?php if ($this->session->has('auth')) { ?><?php if ($this->session->get('auth')['role'] == 2) { ?><a href="<?= $this->url->get('/Admin/subforum/create') ?>" class="btn btn-sm btn-primary p-2" />New <i class="fas fa-plus"></i></a><?php } ?><?php } ?></th>
 				</tr>
 			</thead>
 			<tbody><?php if ($this->length($subforums) > 0) { ?><?php foreach ($subforums as $subforum) { ?>

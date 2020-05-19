@@ -12,19 +12,47 @@
 	<body>
 		<?= $this->flashSession->output() ?>
 		
-
+<?php $usr = json_decode($user); ?>
+<?php if ($user->role == 0) { ?>
+<?php $role = 'User'; ?>
+<?php } elseif ($user->role == 1) { ?>
+<?php $role = 'Moderator'; ?>
+<?php } else { ?>
+<?php $role = 'Admin'; ?>
+<?php } ?>
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100 p-t-50 p-b-90">
+			<?php if ($this->session->get('forum')['uid'] == $usr->id) { ?>
+			<span class="login100-form-title p-b-51">
+				Your Profile
+				<h5 class="text-muted"> <?= $role ?> </h5>
+			</span>
+			<?php } else { ?>
+			<span class="login100-form-title p-b-51">
+				<?= $user->username ?>'s Profile
+				<?php if ($user->role == 0) { ?>
+				<?php $role = 'User'; ?>
+				<?php } elseif ($user->role == 1) { ?>
+				<?php $role = 'Moderator'; ?>
+				<?php } else { ?>
+				<?php $role = 'Admin'; ?>
+				<?php } ?>
+				<h5 class="text-muted"> <?= $role ?> </h5>
+				<h5 class="text-muted"> <?= $user->email ?></h5>
+			</span>
+			<?php } ?>
+
+
+			<?php if ($this->session->get('forum')['uid'] == $usr->id) { ?>
+			<span class="login100-form-title p-b-51">
+				Change email
+			</span>
 			<form
 				class="login100-form validate-form flex-sb flex-w"
 				action="<?= $this->url->get('/Forum/user/edit') ?>"
 				method="POST"
 			>
-				<span class="login100-form-title p-b-51">
-					<?= $user->username ?>'s Profile
-				</span>
-
 				<input
 					type="hidden"
 					name="<?php echo $this->security->getTokenKey() ?>"
@@ -36,21 +64,6 @@
 					name="uid"
 					value="<?= $this->session->get('forum')['uid'] ?>"
 				/>
-				<span class="focus-input100"></span>
-
-				<div
-					class="wrap-input100 validate-input m-b-16"
-					data-validate="Username is required"
-				>
-					<input
-						class="input100"
-						type="text"
-						name="username"
-						value="<?= $this->session->get('auth')['username'] ?>"
-						disabled
-					/>
-					<span class="focus-input100"></span>
-				</div>
 
 				<div
 					class="wrap-input100 validate-input m-b-16"
@@ -99,6 +112,7 @@
 				</div>
 			</form>
 			<hr />
+			<?php } ?>
 			<form action="<?= $this->url->get('/Forum') ?>">
 				<div class="container-login100-form-btn m-t-17">
 					<button class="back100-form-btn">

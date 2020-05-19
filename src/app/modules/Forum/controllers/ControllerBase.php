@@ -37,11 +37,6 @@ class ControllerBase extends Controller
         $authCol->addCss('css/auth/util.css');
         $authCol->addCss('css/auth/main.css');
 
-        $adminCol = $this->assets->collection('adminCss');
-        $adminCol->addCss('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i', false);
-        $adminCol->addCss('css/admin/style.min.css');
-        $adminCol->addCss('vendor/admin/datatables/dataTables.bootstrap4.min.css');
-
 
 
 
@@ -53,16 +48,6 @@ class ControllerBase extends Controller
         $appFooter->addJs('js/app/contact_me.js');
         $appFooter->addJs('js/app/clean-blog.min.js"');
 
-
-        $adminFooter = $this->assets->collection('adminJs');
-        $adminFooter->addJs('vendor/admin/jquery-easing/jquery.easing.min.js');
-        $adminFooter->addJs('js/admin/sb-admin-2.min.js');
-        $adminFooter->addJs('vendor/admin/chart.js/Chart.min.js');
-        $adminFooter->addJs('js/admin/demo/chart-area-demo.js');
-        $adminFooter->addJs('js/admin/demo/chart-pie-demo.js');
-        $adminFooter->addJs('vendor/admin/datatables/jquery.dataTables.min.js');
-        $adminFooter->addJs('vendor/admin/datatables/dataTables.bootstrap4.min.js');
-        $adminFooter->addJs('js/admin/demo/datatables-demo.js');
 
 
 

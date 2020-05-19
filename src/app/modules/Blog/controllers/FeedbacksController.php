@@ -4,20 +4,10 @@ declare(strict_types=1);
 
 namespace ShukkaiKei\Modules\Blog\Controllers;
 
-use ShukkaiKei\Modules\Blog\Models\Feedbacks;
+use ShukkaiKei\Models\Blog\Feedbacks;
 
 class FeedbacksController extends ControllerBase
 {
-
-    public function indexAction()
-    {
-        $phql = "SELECT * FROM ShukkaiKei\Modules\Blog\Models\Feedbacks";
-
-        $records = $this->modelsManager->executeQuery($phql);
-        $this->view->setVar('records', $records);
-
-        $this->view->pick('dashboard/feedbacks/index');
-    }
 
     public function createAction()
     {
@@ -38,17 +28,4 @@ class FeedbacksController extends ControllerBase
         $this->response->redirect('/Blog/index/contact');
     }
 
-    public function deleteAction($id)
-    {
-
-        $phql = "DELETE FROM ShukkaiKei\Modules\Blog\Models\Feedbacks WHERE id = :id:";
-        $record = $this->modelsManager->executeQuery($phql, ['id' => $id]);
-
-        if ($record) {
-            $this->flashSession->success('Feedback successfully deleted');
-        } else {
-            $this->flashSession->error('Failed to delete feedback');
-        }
-        $this->response->redirect('/Blog/feedbacks');
-    }
 }

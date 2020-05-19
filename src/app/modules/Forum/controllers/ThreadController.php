@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace ShukkaiKei\Modules\Forum\Controllers;
 
-use ShukkaiKei\Modules\Forum\Models\Subforums;
-use ShukkaiKei\Modules\Forum\Models\Threads;
+use ShukkaiKei\Models\Forum\Subforums;
+use ShukkaiKei\Models\Forum\Threads;
 
 class ThreadController extends ControllerBase
 {

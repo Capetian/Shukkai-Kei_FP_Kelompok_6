@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="{{ url('/Forum') }}">Shukkaikei Forum</a>
+		<a class="navbar-brand" href="{{ url('/Forum/index') }}">Shukkaikei Forum</a>
 		<button
 			class="navbar-toggler navbar-toggler-right"
 			type="button"
@@ -28,7 +28,7 @@
 				{%- if session.has('auth') -%} {%- if session.get('auth')['role'] ==
 				2-%}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('/Forum/dashboard') }}">Dashboard</a>
+					<a class="nav-link" href="{{ url('/Admin') }}">Dashboard</a>
 				</li>
 				{%- endif -%}
 				<li class="nav-item">

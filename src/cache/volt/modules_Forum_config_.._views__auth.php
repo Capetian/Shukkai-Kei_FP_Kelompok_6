@@ -11,7 +11,7 @@ a:3:{i:0;s:391:"<!DOCTYPE html>
 	</head>
 	<body>
 		<?= $this->flashSession->output() ?>
-		";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:1:" ";s:4:"file";s:143:"D:\DeveloperTools\xamppREINSTALL\htdocs\_Phalcon\shukkaikei-kelompok\Shukkai-Kei_FP_Kelompok_6\src\app\modules\Forum\config/../views/\auth.volt";s:4:"line";i:14;}}i:1;s:297:"
+		";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:1:" ";s:4:"file";s:90:"C:\xampp\htdocs\Shukkai-Kei_FP_Kelompok_6\src\app\modules\Forum\config/../views/\auth.volt";s:4:"line";i:14;}}i:1;s:297:"
 	</body>
 	<script
 		src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
