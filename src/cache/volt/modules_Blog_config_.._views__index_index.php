@@ -41,7 +41,7 @@
 
 			<!-- Blog Post --><?php if ($this->length($records) > 0) { ?><?php foreach ($records as $record) { ?>
 			
-			<div class="post-preview"><?php if ($this->session->has('auth')) { ?><a href="Blog/blog/<?= $record->id ?>"><?php } else { ?><a href="Forum/auth/login"><?php } ?><h2 class="post-title">
+			<div class="post-preview"><?php if ($this->session->has('auth')) { ?><a href="<?= $this->url->get('/Blog/blog/show/') . $record->id ?>"><?php } else { ?><a href="Forum/auth/login"><?php } ?><h2 class="post-title">
 						<?= $record->title ?>
 					</h2>
 					<h3 class="post-subtitle">

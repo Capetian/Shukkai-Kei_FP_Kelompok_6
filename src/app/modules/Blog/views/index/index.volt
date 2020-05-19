@@ -30,7 +30,7 @@
 			
 			<div class="post-preview">
 				{%- if session.has('auth') -%}
-				<a href="Blog/blog/{{ record.id }}">
+				<a href="{{ url('/Blog/blog/show/')~ record.id }}">
 				{%- else -%}
 				<a href="Forum/auth/login">
 				{%- endif -%}
