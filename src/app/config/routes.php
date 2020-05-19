@@ -2,14 +2,8 @@
 
 $router = $container->getRouter();
 $router->removeExtraSlashes(true);
-$router->notFound(
-    [
-        'namespace' => 'ShukkaiKei\Modules\Forum\Controllers',
-        'module' => 'Forum',
-        'controller' => 'error',
-        'action'     => 'show404',
-    ]
-);
+
+
 
 
 $router->add('/', [
@@ -48,5 +42,15 @@ foreach ($modules as $moduleName => $module) {
             'action' => 2,
             'params' => 3
         ));	
+
+
+        $router->notFound(
+            [
+                'namespace' => $module['controllerNamespace'],
+                'module' => $moduleName,
+                'controller' => 'error',
+                'action'     => 'show404',
+            ]
+        );
     }
 }
